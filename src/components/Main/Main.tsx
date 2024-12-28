@@ -7,28 +7,61 @@ import { TodoItem } from '../Todo/TodoItem';
 
 export const Main = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [todosLeft, setTodosLeft] = useState<number>(0);
+
   const onAddTodo = (text: string) => {
     console.log('onAddTodo', text);
     const newTodo: TodoItem = {
-      id: new Date().toString(),
+      id: Date.now(),
       text,
       isCompleted: false,
     };
     setTodos([...todos, newTodo]);
   };
+
+  const onDeleteTodo = (id: number) => {
+    setTodos(todos.filter((t) => t.id !== id));
+  };
+  const onSwitchCompleted = (id: number) => {
+    setTodos(
+      todos.map((t) =>
+        t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
+      ),
+    );
+  };
+
+  const onAll = () => {};
+  const onActive = () => {};
+  const onCompleted = () => {};
+  const onClearCompleted = () => {};
+
   useEffect(() => {
-    const t1: TodoItem = { id: 't1', text: 'первый', isCompleted: false };
-    const t2: TodoItem = { id: 't2', text: 'второй', isCompleted: false };
-    const t3: TodoItem = { id: 't3', text: 'третий', isCompleted: false };
+    const t1: TodoItem = { id: 1, text: 'первый', isCompleted: false };
+    const t2: TodoItem = { id: 2, text: 'второй', isCompleted: false };
+    const t3: TodoItem = { id: 3, text: 'третий', isCompleted: false };
     const test: TodoItem[] = [t1, t2, t3];
     setTodos(test);
   }, []);
 
+  useEffect(() => {
+    setTodosLeft(todos.filter((t) => !t.isCompleted).length);
+  }, [todos]);
+
   return (
     <div className="Main">
-      <NewTodo onAddTodo={onAddTodo} />;
-      <Todos todos={todos} />;
-      <Tool />;
+      <NewTodo onAddTodo={onAddTodo} />
+      <Todos
+        todos={todos}
+        onDeleteTodo={onDeleteTodo}
+        onSwitchCompleted={onSwitchCompleted}
+      />
+      <Tool
+        todosLeft={todosLeft}
+        onAll={onAll}
+        onActive={onActive}
+        onCompleted={onCompleted}
+        onClearCompleted={onClearCompleted}
+      />
     </div>
   );
 };

@@ -1,0 +1,26 @@
+.Todo {
+  display: grid;
+  grid-template-columns: 4rem 3fr 1fr;
+  &__completed {
+    grid-column: 1/2;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1px solid #acacac;
+    font-size: 3rem;
+    &_active {
+      color: #acacac;
+      border: 1px solid #acacac;
+    }
+    &_completed {
+      color: #3ea390;
+      border: 1px solid #3ea390;
+    }
+  }
+  &__text {
+    grid-column: 2/3;
+  }
+  &__delete {
+    grid-column: 3/4;
+  }
+}

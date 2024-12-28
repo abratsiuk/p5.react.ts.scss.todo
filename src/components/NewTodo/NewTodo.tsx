@@ -6,7 +6,9 @@ export const NewTodo: React.FC<NewTodoProps> = ({ onAddTodo }) => {
   return (
     <div className="NewTodo">
       <input type="text" name="NewTodo" id="NewTodo" />
-      <button onClick={() => onAddTodo('test')}>Добавить</button>
+      <button onClick={() => onAddTodo('test' + Math.random())}>
+        Добавить
+      </button>
     </div>
   );
 };
