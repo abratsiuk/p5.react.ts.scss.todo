@@ -33,6 +33,9 @@ export const Main = () => {
       ),
     );
   };
+  const onChangeTodoText = (id: number, text: string) => {
+    setTodos(todos.map((t) => (t.id === id ? { ...t, text } : t)));
+  };
 
   const onAll = () => {
     setFilter('All');
@@ -78,6 +81,7 @@ export const Main = () => {
         todos={filtered}
         onDeleteTodo={onDeleteTodo}
         onSwitchCompleted={onSwitchCompleted}
+        onChangeTodoText={onChangeTodoText}
       />
       <Tool
         todosLeft={todosLeft}

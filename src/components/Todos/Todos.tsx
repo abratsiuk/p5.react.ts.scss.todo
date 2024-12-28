@@ -7,6 +7,7 @@ export const Todos: React.FC<TodosProps> = ({
   todos,
   onDeleteTodo,
   onSwitchCompleted,
+  onChangeTodoText,
 }) => {
   return (
     <div className="Todos">
@@ -16,6 +17,7 @@ export const Todos: React.FC<TodosProps> = ({
           todo={todo}
           onDeleteTodo={onDeleteTodo}
           onSwitchCompleted={onSwitchCompleted}
+          onChangeTodoText={onChangeTodoText}
         />
       ))}
     </div>
