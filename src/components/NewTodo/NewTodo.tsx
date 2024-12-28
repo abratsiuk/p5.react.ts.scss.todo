@@ -1,5 +1,12 @@
+import React from 'react';
+import { NewTodoProps } from './NewTodoProps';
 import './NewTodo.scss';
 
-export const NewTodo = () => {
-  return <div>NewTodo</div>;
+export const NewTodo: React.FC<NewTodoProps> = ({ onAddTodo }) => {
+  return (
+    <div className="NewTodo">
+      <input type="text" name="NewTodo" id="NewTodo" />
+      <button onClick={() => onAddTodo('test')}>Добавить</button>
+    </div>
+  );
 };

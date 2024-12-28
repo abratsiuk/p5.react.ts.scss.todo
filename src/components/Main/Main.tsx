@@ -7,7 +7,15 @@ import { TodoItem } from '../Todo/TodoItem';
 
 export const Main = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
-
+  const onAddTodo = (text: string) => {
+    console.log('onAddTodo', text);
+    const newTodo: TodoItem = {
+      id: new Date().toString(),
+      text,
+      isCompleted: false,
+    };
+    setTodos([...todos, newTodo]);
+  };
   useEffect(() => {
     const t1: TodoItem = { id: 't1', text: 'первый', isCompleted: false };
     const t2: TodoItem = { id: 't2', text: 'второй', isCompleted: false };
@@ -18,7 +26,7 @@ export const Main = () => {
 
   return (
     <div className="Main">
-      <NewTodo />;
+      <NewTodo onAddTodo={onAddTodo} />;
       <Todos todos={todos} />;
       <Tool />;
     </div>
