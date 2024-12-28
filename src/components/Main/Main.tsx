@@ -5,8 +5,12 @@ import { Tool } from '../Tool';
 import './Main.scss';
 import { TodoItem } from '../Todo/TodoItem';
 
+type Filter = 'All' | 'Active' | 'Completed';
+
 export const Main = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [filter, setFilter] = useState<Filter>('All');
+  const [filtered, setFiltered] = useState<TodoItem[]>([]);
   const [todosLeft, setTodosLeft] = useState<number>(0);
 
   const onAddTodo = (text: string) => {
@@ -30,10 +34,18 @@ export const Main = () => {
     );
   };
 
-  const onAll = () => {};
-  const onActive = () => {};
-  const onCompleted = () => {};
-  const onClearCompleted = () => {};
+  const onAll = () => {
+    setFilter('All');
+  };
+  const onActive = () => {
+    setFilter('Active');
+  };
+  const onCompleted = () => {
+    setFilter('Completed');
+  };
+  const onClearCompleted = () => {
+    setTodos(todos.filter((t) => !t.isCompleted));
+  };
 
   useEffect(() => {
     const t1: TodoItem = { id: 1, text: 'первый', isCompleted: false };
@@ -41,17 +53,29 @@ export const Main = () => {
     const t3: TodoItem = { id: 3, text: 'третий', isCompleted: false };
     const test: TodoItem[] = [t1, t2, t3];
     setTodos(test);
+    setFiltered(test);
   }, []);
 
   useEffect(() => {
     setTodosLeft(todos.filter((t) => !t.isCompleted).length);
-  }, [todos]);
+    switch (filter) {
+      case 'All':
+        setFiltered(todos);
+        break;
+      case 'Active':
+        setFiltered(todos.filter((t) => !t.isCompleted));
+        break;
+      case 'Completed':
+        setFiltered(todos.filter((t) => t.isCompleted));
+        break;
+    }
+  }, [todos, filter]);
 
   return (
     <div className="Main">
       <NewTodo onAddTodo={onAddTodo} />
       <Todos
-        todos={todos}
+        todos={filtered}
         onDeleteTodo={onDeleteTodo}
         onSwitchCompleted={onSwitchCompleted}
       />
