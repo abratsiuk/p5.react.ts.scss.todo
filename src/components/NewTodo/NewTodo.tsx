@@ -18,13 +18,14 @@ export const NewTodo: React.FC<NewTodoProps> = ({ onAddTodo }) => {
         onKeyDown={(event) => {
           if (event.code === 'Enter') {
             onAddTodo(value);
+            setValue('');
           }
-          if (event.code === 'Esc') {
+          if (event.code === 'Escape') {
             setValue('');
           }
         }}
+        onBlur={() => setValue('')}
       />
-      <button onClick={() => onAddTodo(value)}>Добавить</button>
     </div>
   );
 };
