@@ -10,23 +10,43 @@
 
   &__completed {
     grid-column: 1/2;
+    align-self: center;
+    justify-self: center;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
     border: 1px solid #acacac;
     font-size: 3rem;
+    transition: color 0.2s ease-out;
     &_active {
       color: #acacac;
       border: 1px solid #acacac;
     }
     &_completed {
       color: #3ea390;
-      border: 1px solid #3ea390;
+      border: 1px solid #bddad5;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &::after {
+        content: '\2714';
+        font-size: 2.2rem;
+        // font-family: 'Roboto', serif;
+        // font-weight: 100;
+        // font-style: normal;
+      }
     }
   }
   &__text {
     grid-column: 2/3;
     padding: $Todo__text-padding;
+    &_active {
+    }
+    &_completed {
+      text-decoration: line-through;
+      color: #d9d9d9;
+    }
   }
   &__delete {
     grid-column: 2/3;
@@ -44,7 +64,7 @@
     color: #cc9a9a;
     margin-bottom: 1.1rem;
     &::after {
-      content: '×';
+      content: '\00D7';
     }
     &:hover {
       transition: color 0.2s ease-out;
