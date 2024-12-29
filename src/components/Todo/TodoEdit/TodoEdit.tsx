@@ -28,18 +28,6 @@ export const TodoEdit: React.FC<TodoEditProps> = ({
         }}
         onBlur={onCancelEditing}
       />
-      <button
-        className="TodoEdit__button TodoEdit__button_ok"
-        onClick={() => onEditTodo(value)}
-      >
-        Сохранить
-      </button>
-      <button
-        className="TodoEdit__button TodoEdit__button_cancel"
-        onClick={onCancelEditing}
-      >
-        Отменить
-      </button>
     </div>
   );
 };

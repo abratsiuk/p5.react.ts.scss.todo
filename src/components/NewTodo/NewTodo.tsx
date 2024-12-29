@@ -24,7 +24,6 @@ export const NewTodo: React.FC<NewTodoProps> = ({ onAddTodo }) => {
             setValue('');
           }
         }}
-        onBlur={() => setValue('')}
       />
     </div>
   );

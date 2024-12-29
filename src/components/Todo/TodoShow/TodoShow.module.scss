@@ -1,6 +1,13 @@
 .TodoShow {
   display: grid;
-  grid-template-columns: 4rem 3fr 1fr;
+  grid-template-columns: $Todo-grid-template-columns;
+  align-items: center;
+
+  width: $Todo-width;
+  height: $Todo-height;
+
+  position: relative;
+
   &__completed {
     grid-column: 1/2;
     width: 3rem;
@@ -19,8 +26,33 @@
   }
   &__text {
     grid-column: 2/3;
+    padding: $Todo__text-padding;
   }
   &__delete {
-    grid-column: 3/4;
+    grid-column: 2/3;
+    display: none;
+    border: none;
+    outline: none;
+    position: absolute;
+    right: 1rem;
+    bottom: 0;
+    background-color: $Todo-background-color;
+    width: 4rem;
+    height: 4rem;
+    margin: auto 0;
+    font-size: 3rem;
+    color: #cc9a9a;
+    margin-bottom: 1.1rem;
+    &::after {
+      content: '×';
+    }
+    &:hover {
+      transition: color 0.2s ease-out;
+      color: #af5b5e;
+    }
+  }
+
+  &:hover &__delete {
+    display: block;
   }
 }

@@ -26,9 +26,7 @@ export const TodoShow: React.FC<TodoShowProps> = ({
       <button
         className={styles.TodoShow__delete}
         onClick={() => onDeleteTodo(todo.id)}
-      >
-        Удалить
-      </button>
+      ></button>
     </div>
   );
 };

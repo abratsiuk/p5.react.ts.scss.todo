@@ -1,0 +1,14 @@
+.TodoEdit {
+  display: grid;
+  grid-template-columns: $Todo-grid-template-columns;
+  align-items: center;
+
+  width: $Todo-width;
+  height: $Todo-height;
+
+  &__text {
+    grid-column: 2/3;
+    height: $Todo-height;
+    padding: $Todo__text-padding;
+  }
+}
