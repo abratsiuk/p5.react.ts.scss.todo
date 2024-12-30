@@ -13,7 +13,7 @@ export const Tool: React.FC<ToolProps> = ({
 }) => {
   const clearClassName = `Tool__clearCompleted ${todosState === 'empty' || todosState === 'allActive' ? 'Tool__clearCompleted_noCompleted' : ''}`;
   return (
-    <div className="Tool">
+    <div className={`Tool ${todosState === 'empty' ? 'Tool_hide' : ''}`}>
       <span className="Tool__info">{todosLeft} items left</span>
 
       <span

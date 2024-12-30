@@ -11,9 +11,10 @@ export const App = () => {
       <div className="App__footer">
         <div className="App__instruction">
           <div>Double-click to edit a todo.</div>
+          <div>The data is saved in localStorage.</div>
           <div>
-            The data is saved in localStorage, and you can edit a todo
-            simultaneously across different browser tabs.
+            It is possible to edit a todo simultaneously across different
+            browser tabs.
           </div>
         </div>
       </div>
