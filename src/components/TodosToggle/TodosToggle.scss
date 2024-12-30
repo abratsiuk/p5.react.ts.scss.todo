@@ -2,15 +2,15 @@
   position: absolute;
   top: 1.9rem;
   left: 1rem;
-
   &__toggle {
     border: none;
     outline: none;
     background-color: $TodoNew-background-color;
-    &_empty {
+    &_hide {
+      display: none;
     }
-    &_anyActive,
-    &_allCompleted {
+    &_toAllActive,
+    &_toAllCompleted {
       &::after {
         content: '<';
         font-size: 2.5rem;
@@ -20,14 +20,14 @@
         transition: color 0.2s ease-out;
       }
     }
-    &_anyActive {
-      &::after {
-        color: #e6e6e6;
-      }
-    }
-    &_allCompleted {
+    &_toAllActive {
       &::after {
         color: #737373;
+      }
+    }
+    &_toAllCompleted {
+      &::after {
+        color: #e6e6e6;
       }
     }
   }

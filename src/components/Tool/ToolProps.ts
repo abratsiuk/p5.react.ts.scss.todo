@@ -1,7 +1,9 @@
-import { TTodosToggle } from '../../types/TTodosToggle';
+import { TTodosState } from '../../types/TTodosState';
+import { TTodosFilter } from '../../types/TTodosFilter';
 export interface ToolProps {
   todosLeft: number;
-  TodosToggle: TTodosToggle;
+  todosState: TTodosState;
+  todosFilter: TTodosFilter;
   onAll: () => void;
   onActive: () => void;
   onCompleted: () => void;

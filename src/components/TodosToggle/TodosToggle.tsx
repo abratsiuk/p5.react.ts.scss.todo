@@ -6,13 +6,22 @@ export const TodosToggle: React.FC<ITodosToggleProps> = ({
   todosState,
   onToggleCompletedAll,
 }) => {
+  const modifier =
+    todosState === 'empty'
+      ? 'hide'
+      : todosState === 'allCompleted'
+        ? 'toAllActive'
+        : 'toAllCompleted';
   return (
     <div className="TodosToggle">
       <button
-        className={`TodosToggle__toggle TodosToggle__toggle_${todosState}`}
+        className={`TodosToggle__toggle TodosToggle__toggle_${modifier}`}
         onClick={() => {
           if (todosState === 'empty') return;
-          onToggleCompletedAll(todosState === 'anyActive');
+          if (todosState === 'allActive') onToggleCompletedAll(true);
+          if (todosState === 'anyActive-anyCompleted')
+            onToggleCompletedAll(true);
+          if (todosState === 'allCompleted') onToggleCompletedAll(false);
         }}
       />
     </div>

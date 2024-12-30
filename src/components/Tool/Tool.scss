@@ -1,3 +1,51 @@
 .Tool {
   background-color: #ffffff;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1.6rem;
+
+  &__info,
+  &__all,
+  &__active,
+  &__completed,
+  &__clearCompleted {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #777;
+  }
+
+  &__all,
+  &__active,
+  &__completed {
+    margin: 0.3rem;
+    padding: 0 0.7rem;
+    &_selected {
+      border: 1px solid #efd5d5;
+      border-radius: 3px;
+    }
+    &:not(&_selected):hover {
+      border-radius: 3px;
+      outline: 1px solid #f7e9e9;
+    }
+  }
+  &__all {
+    margin-left: 3rem;
+  }
+  &__info {
+    margin-right: auto;
+  }
+
+  &__clearCompleted {
+    margin-left: auto;
+    &:not(&_noCompleted):hover {
+      text-decoration: underline;
+    }
+    &_noCompleted {
+      color: #ffffff;
+      cursor: default;
+    }
+  }
 }

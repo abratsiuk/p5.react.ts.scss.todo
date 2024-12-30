@@ -10,8 +10,8 @@ import { TodosToggle } from '../TodosToggle';
 
 export const Main = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
-  const [filterCondition, setFilterCondition] = useState<TTodosFilter>('all');
   const [filtered, setFiltered] = useState<TodoItem[]>([]);
+  const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
   const [todosLeft, setTodosLeft] = useState<number>(0);
   const [todosState, setTodosState] = useState<TTodosState>('empty');
 
@@ -64,13 +64,15 @@ export const Main = () => {
     setTodosLeft(activeCount);
     if (allCount === 0) {
       setTodosState('empty');
-    } else if (activeCount > 0) {
-      setTodosState('anyActive');
+    } else if (activeCount > 0 && completedCount == 0) {
+      setTodosState('allActive');
+    } else if (activeCount > 0 && completedCount > 0) {
+      setTodosState('anyActive-anyCompleted');
     } else {
       setTodosState('allCompleted');
     }
 
-    switch (filterCondition) {
+    switch (todosFilter) {
       case 'all':
         setFiltered(todos);
         break;
@@ -81,7 +83,7 @@ export const Main = () => {
         setFiltered(todos.filter((t) => t.isCompleted));
         break;
     }
-  }, [todos, filterCondition]);
+  }, [todos, todosFilter]);
 
   return (
     <div className="Main">
@@ -98,10 +100,11 @@ export const Main = () => {
       />
       <Tool
         todosLeft={todosLeft}
-        TodosToggle={TodosToggle}
-        onAll={() => setFilterCondition('all')}
-        onActive={() => setFilterCondition('active')}
-        onCompleted={() => setFilterCondition('completed')}
+        todosState={todosState}
+        todosFilter={todosFilter}
+        onAll={() => setTodosFilter('all')}
+        onActive={() => setTodosFilter('active')}
+        onCompleted={() => setTodosFilter('completed')}
         onClearCompleted={handleClearCompleted}
       />
     </div>

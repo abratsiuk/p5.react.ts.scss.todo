@@ -1,1 +1,5 @@
-export type TTodosState = 'empty' | 'anyActive' | 'allCompleted';
+export type TTodosState =
+  | 'empty'
+  | 'allActive'
+  | 'anyActive-anyCompleted'
+  | 'allCompleted';
