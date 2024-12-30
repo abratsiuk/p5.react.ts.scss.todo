@@ -1,4 +1,4 @@
-import { TodoItem } from '../../Todo/TodoItem';
+import { TodoItem } from '../Todo/TodoItem';
 
 export interface TodoShowProps {
   todo: TodoItem;

@@ -1,4 +1,4 @@
-.NewTodo {
+.TodoNew {
   display: grid;
   grid-template-columns: $Todo-grid-template-columns;
   align-items: center;
@@ -6,12 +6,13 @@
   width: $Todo-width;
   height: $Todo-height;
   box-shadow: $Todo-box-shadow;
-  background-color: $NewTodo-background-color;
+  background-color: $TodoNew-background-color;
   font-size: $Todo-font-size;
   color: $Todo-color;
 
   &__text {
     grid-column: 2/3;
+    padding: $Todo__text-padding;
     border: none;
     outline: none;
     &::placeholder {

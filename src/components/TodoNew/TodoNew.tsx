@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { NewTodoProps } from './NewTodoProps';
-import './NewTodo.scss';
+import { TodoNewProps } from './TodoNewProps';
+import './TodoNew.scss';
 
-export const NewTodo: React.FC<NewTodoProps> = ({ onAddTodo }) => {
+export const TodoNew: React.FC<TodoNewProps> = ({ onAddTodo }) => {
   const [value, setValue] = useState<string>('');
 
   return (
-    <div className="NewTodo">
+    <div className="TodoNew">
       <input
-        className="NewTodo__text"
+        className="TodoNew__text"
         type="text"
-        name="NewTodo"
-        id="NewTodo"
+        name="TodoNew"
+        id="TodoNew"
         placeholder="What needs to be done?"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(event) => {
           if (event.code === 'Enter') {
-            onAddTodo(value);
+            if (value.trim()) onAddTodo(value.trim());
             setValue('');
           }
           if (event.code === 'Escape') {

@@ -1,0 +1,34 @@
+.TodosToggle {
+  position: absolute;
+  top: 1.9rem;
+  left: 1rem;
+
+  &__toggle {
+    border: none;
+    outline: none;
+    background-color: $TodoNew-background-color;
+    &_empty {
+    }
+    &_anyActive,
+    &_allCompleted {
+      &::after {
+        content: '<';
+        font-size: 2.5rem;
+        display: inline-block;
+        transform-origin: center;
+        transform: rotate(-90deg) scaleX(0.8) scaleY(1.7);
+        transition: color 0.2s ease-out;
+      }
+    }
+    &_anyActive {
+      &::after {
+        color: #e6e6e6;
+      }
+    }
+    &_allCompleted {
+      &::after {
+        color: #737373;
+      }
+    }
+  }
+}

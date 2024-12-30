@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TodoProps } from './TodoProps';
-import { TodoShow } from './TodoShow';
-import { TodoEdit } from './TodoEdit';
+import { TodoShow } from '../TodoShow';
+import { TodoEdit } from '../TodoEdit';
 import './Todo.scss';
 
 export const Todo: React.FC<TodoProps> = ({

@@ -4,6 +4,7 @@ import './Tool.scss';
 
 export const Tool: React.FC<ToolProps> = ({
   todosLeft,
+  TodosToggle,
   onAll,
   onActive,
   onCompleted,

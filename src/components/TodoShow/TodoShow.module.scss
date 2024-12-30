@@ -30,17 +30,15 @@
       justify-content: center;
       align-items: center;
       &::after {
-        content: '\2714';
+        content: '\2713';
         font-size: 2.2rem;
-        // font-family: 'Roboto', serif;
-        // font-weight: 100;
-        // font-style: normal;
       }
     }
   }
   &__text {
     grid-column: 2/3;
     padding: $Todo__text-padding;
+    transition: color 0.2s ease-out;
     &_active {
     }
     &_completed {

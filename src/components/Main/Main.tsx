@@ -1,52 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import { NewTodo } from '../NewTodo';
+import { TodoNew } from '../TodoNew';
 import { Todos } from '../Todos';
 import { Tool } from '../Tool';
 import './Main.scss';
 import { TodoItem } from '../Todo/TodoItem';
-
-type Filter = 'All' | 'Active' | 'Completed';
+import { TTodosState } from '../../types/TTodosState';
+import { TTodosFilter } from '../../types/TTodosFilter';
+import { TodosToggle } from '../TodosToggle';
 
 export const Main = () => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
-  const [filter, setFilter] = useState<Filter>('All');
+  const [filterCondition, setFilterCondition] = useState<TTodosFilter>('all');
   const [filtered, setFiltered] = useState<TodoItem[]>([]);
   const [todosLeft, setTodosLeft] = useState<number>(0);
+  const [todosState, setTodosState] = useState<TTodosState>('empty');
 
-  const onAddTodo = (text: string) => {
-    console.log('onAddTodo', text);
-    const newTodo: TodoItem = {
+  const handleAddTodo = (text: string) => {
+    const TodoNew: TodoItem = {
       id: Date.now(),
       text,
       isCompleted: false,
     };
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, TodoNew]);
   };
 
-  const onDeleteTodo = (id: number) => {
+  const handleDeleteTodo = (id: number) => {
     setTodos(todos.filter((t) => t.id !== id));
   };
-  const onSwitchCompleted = (id: number) => {
+  const onToggleComplete = (id: number) => {
     setTodos(
       todos.map((t) =>
         t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
       ),
     );
   };
-  const onChangeTodoText = (id: number, text: string) => {
+  const handleChangeTodoText = (id: number, text: string) => {
     setTodos(todos.map((t) => (t.id === id ? { ...t, text } : t)));
   };
+  const onToggleCompletedAll = (completed: boolean) => {
+    setTodos(todos.map((t) => ({ ...t, isCompleted: completed })));
+  };
 
-  const onAll = () => {
-    setFilter('All');
-  };
-  const onActive = () => {
-    setFilter('Active');
-  };
-  const onCompleted = () => {
-    setFilter('Completed');
-  };
-  const onClearCompleted = () => {
+  const handleClearCompleted = () => {
     setTodos(todos.filter((t) => !t.isCompleted));
   };
 
@@ -60,35 +55,54 @@ export const Main = () => {
   }, []);
 
   useEffect(() => {
-    setTodosLeft(todos.filter((t) => !t.isCompleted).length);
-    switch (filter) {
-      case 'All':
+    const allCount = todos.length;
+    const completedCount = todos.reduce((completed, todo) => {
+      return completed + (todo.isCompleted ? 1 : 0);
+    }, 0);
+    const activeCount = allCount - completedCount;
+
+    setTodosLeft(activeCount);
+    if (allCount === 0) {
+      setTodosState('empty');
+    } else if (activeCount > 0) {
+      setTodosState('anyActive');
+    } else {
+      setTodosState('allCompleted');
+    }
+
+    switch (filterCondition) {
+      case 'all':
         setFiltered(todos);
         break;
-      case 'Active':
+      case 'active':
         setFiltered(todos.filter((t) => !t.isCompleted));
         break;
-      case 'Completed':
+      case 'completed':
         setFiltered(todos.filter((t) => t.isCompleted));
         break;
     }
-  }, [todos, filter]);
+  }, [todos, filterCondition]);
 
   return (
     <div className="Main">
-      <NewTodo onAddTodo={onAddTodo} />
+      <TodosToggle
+        todosState={todosState}
+        onToggleCompletedAll={onToggleCompletedAll}
+      />
+      <TodoNew onAddTodo={handleAddTodo} />
       <Todos
         todos={filtered}
-        onDeleteTodo={onDeleteTodo}
-        onSwitchCompleted={onSwitchCompleted}
-        onChangeTodoText={onChangeTodoText}
+        onDeleteTodo={handleDeleteTodo}
+        onSwitchCompleted={onToggleComplete}
+        onChangeTodoText={handleChangeTodoText}
       />
       <Tool
         todosLeft={todosLeft}
-        onAll={onAll}
-        onActive={onActive}
-        onCompleted={onCompleted}
-        onClearCompleted={onClearCompleted}
+        TodosToggle={TodosToggle}
+        onAll={() => setFilterCondition('all')}
+        onActive={() => setFilterCondition('active')}
+        onCompleted={() => setFilterCondition('completed')}
+        onClearCompleted={handleClearCompleted}
       />
     </div>
   );
