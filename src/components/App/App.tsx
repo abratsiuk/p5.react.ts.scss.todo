@@ -23,6 +23,7 @@ export const App = () => {
       <div className="App__thanks">
         I thank the TodoMVC team for their inspiring{' '}
         <a
+          className="App__example"
           href="https://todomvc.com/examples/typescript-react/#/"
           target="_blank"
         >
