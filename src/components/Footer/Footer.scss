@@ -1,0 +1,28 @@
+.Footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding-top: 6.5rem;
+  &__instruction {
+    font-size: 1.4rem;
+    color: #bfbfbf;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  &__copying {
+    padding-top: 5rem;
+    font-size: 1.4rem;
+  }
+  &__thanks {
+    font-size: 1.4rem;
+    color: #bfbfbf;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  &__example {
+    font-size: 1.4rem;
+    color: #bfbfbf;
+  }
+}

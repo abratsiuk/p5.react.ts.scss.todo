@@ -1,36 +1,14 @@
 import './App.scss';
+import { Header } from '../Header';
 import { Main } from '../Main';
+import { Footer } from '../Footer';
 
 export const App = () => {
   return (
     <div className="App">
-      <div className="App__header">todos</div>
-
+      <Header />
       <Main />
-
-      <div className="App__footer">
-        <div className="App__instruction">
-          <div>Double-click to edit a todo.</div>
-          <div>The data is saved in localStorage.</div>
-          <div>
-            It is possible to edit a todo simultaneously across different
-            browser tabs.
-          </div>
-        </div>
-      </div>
-
-      <div className="App__copying">© 2024 abratsiuk</div>
-      <div className="App__thanks">
-        I thank the TodoMVC team for their inspiring{' '}
-        <a
-          className="App__example"
-          href="https://todomvc.com/examples/typescript-react/#/"
-          target="_blank"
-        >
-          example
-        </a>{' '}
-        of interface and design mockup.
-      </div>
+      <Footer />
     </div>
   );
 };
