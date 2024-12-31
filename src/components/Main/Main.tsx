@@ -46,15 +46,6 @@ export const Main = () => {
   };
 
   useEffect(() => {
-    const t1: TodoItem = { id: 1, text: 'первый', isCompleted: false };
-    const t2: TodoItem = { id: 2, text: 'второй', isCompleted: false };
-    const t3: TodoItem = { id: 3, text: 'третий', isCompleted: false };
-    const test: TodoItem[] = [t1, t2, t3];
-    setTodos(test);
-    setFiltered(test);
-  }, []);
-
-  useEffect(() => {
     const allCount = todos.length;
     const completedCount = todos.reduce((completed, todo) => {
       return completed + (todo.isCompleted ? 1 : 0);
