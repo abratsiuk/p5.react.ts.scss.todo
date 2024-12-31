@@ -1,11 +1,28 @@
 .Tool {
   background-color: #ffffff;
   font-size: 1.4rem;
-  display: flex;
-  justify-content: center;
+
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 3fr;
   align-items: center;
-  padding: 0.5rem 1.6rem;
+
+  padding: 0.5rem 2rem;
   position: relative;
+  &__info {
+    grid-column: 1/2;
+  }
+  &__all {
+    grid-column: 3/4;
+  }
+  &__active {
+    grid-column: 4/5;
+  }
+  &__completed {
+    grid-column: 5/6;
+  }
+  &__clearCompleted {
+    grid-column: 7/8;
+  }
 
   &_hide {
     display: none;
@@ -26,6 +43,7 @@
   &__active,
   &__completed {
     margin: 0.3rem;
+    text-align: center;
     padding: 0 0.7rem;
     &_selected {
       border: 1px solid #efd5d5;
@@ -36,21 +54,14 @@
       outline: 1px solid #f7e9e9;
     }
   }
-  &__all {
-    margin-left: 3rem;
-  }
-  &__info {
-    margin-right: auto;
-  }
 
   &__clearCompleted {
-    margin-left: auto;
+    text-align: right;
     &:not(&_noCompleted):hover {
       text-decoration: underline;
     }
     &_noCompleted {
-      color: #ffffff;
-      cursor: default;
+      display: none;
     }
   }
 

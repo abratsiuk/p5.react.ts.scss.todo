@@ -27,32 +27,32 @@ export const Tool: React.FC<ToolProps> = ({
 
   return (
     <div className={toolClassName}>
-      <span className="Tool__info">{todosLeft} items left</span>
+      <div className="Tool__info">{todosLeft} items left</div>
 
-      <span
+      <div
         className={`Tool__all ${todosFilter === 'all' ? 'Tool__all_selected' : ''}`}
         onClick={onAll}
       >
         All
-      </span>
+      </div>
 
-      <span
+      <div
         className={`Tool__active ${todosFilter === 'active' ? 'Tool__active_selected' : ''}`}
         onClick={onActive}
       >
         Active
-      </span>
+      </div>
 
-      <span
+      <div
         className={`Tool__completed ${todosFilter === 'completed' ? 'Tool__completed_selected' : ''}`}
         onClick={onCompleted}
       >
         Completed
-      </span>
+      </div>
 
-      <span className={clearClassName} onClick={onClearCompleted}>
+      <div className={clearClassName} onClick={onClearCompleted}>
         Clear completed
-      </span>
+      </div>
     </div>
   );
 };
