@@ -12,7 +12,6 @@ html {
 }
 
 body {
-  background-color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 2.4rem;
   line-height: 2.4rem;
@@ -21,6 +20,11 @@ body {
   min-width: 23rem;
   max-width: 55rem;
   margin: 0 auto;
+}
+body {
+  background: radial-gradient(circle, #eaf2f8 10%, #d6eaf8 100%);
+  background-position: center 8rem;
+  // background-size: cover;
 }
 
 /*https://fonts.google.com*/
