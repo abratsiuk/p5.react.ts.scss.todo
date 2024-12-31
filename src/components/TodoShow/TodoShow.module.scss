@@ -23,8 +23,10 @@
       border: 1px solid #acacac;
     }
     &_completed {
-      color: #3ea390;
-      border: 1px solid #bddad5;
+      color: #58d68d;
+      border: 2px solid #abebc6;
+      width: 3.4rem;
+      height: 3.4rem;
       position: relative;
       display: flex;
       justify-content: center;
@@ -32,6 +34,7 @@
       &::after {
         content: '\2713';
         font-size: 2.2rem;
+        font-weight: 700;
       }
     }
   }

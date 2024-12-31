@@ -11,9 +11,22 @@ export const Tool: React.FC<ToolProps> = ({
   onCompleted,
   onClearCompleted,
 }) => {
-  const clearClassName = `Tool__clearCompleted ${todosState === 'empty' || todosState === 'allActive' ? 'Tool__clearCompleted_noCompleted' : ''}`;
+  const toolClassName = [
+    'Tool',
+    todosState === 'empty' ? 'Tool_hide' : '',
+    todosLeft > 0 && todosLeft <= 5 ? 'Tool_' + todosLeft : '',
+    todosLeft > 5 ? 'Tool_more5' : '',
+  ].join(' ');
+
+  const clearClassName = [
+    'Tool__clearCompleted',
+    todosState === 'empty' || todosState === 'allActive'
+      ? 'Tool__clearCompleted_noCompleted'
+      : '',
+  ].join(' ');
+
   return (
-    <div className={`Tool ${todosState === 'empty' ? 'Tool_hide' : ''}`}>
+    <div className={toolClassName}>
       <span className="Tool__info">{todosLeft} items left</span>
 
       <span

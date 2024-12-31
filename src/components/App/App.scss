@@ -23,6 +23,10 @@
     padding: 0 2rem;
     text-align: center;
   }
+  &__copying {
+    padding-top: 5rem;
+    font-size: 1.4rem;
+  }
   &__thanks {
     font-size: 1.4rem;
     color: #bfbfbf;
@@ -32,9 +36,5 @@
   &__example {
     font-size: 1.4rem;
     color: #bfbfbf;
-  }
-  &__copying {
-    padding-top: 6.5rem;
-    font-size: 1.4rem;
   }
 }
