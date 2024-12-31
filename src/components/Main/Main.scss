@@ -1,5 +1,5 @@
 .Main {
   position: relative;
-  border: 1px solid #ebf5fb;
-  box-shadow: 0px 3px 3px 0px #d6eaf8;
+  border: 1px solid $Main-border-color;
+  box-shadow: 0px 3px 3px 0px $Main-box-shadow-color;
 }
