@@ -6,7 +6,7 @@ import './Todos.scss';
 export const Todos: React.FC<ITodosProps> = ({
   todos,
   onDeleteTodo,
-  onSwitchCompleted,
+  onToggleCompleted,
   onChangeTodoText,
 }) => {
   return (
@@ -16,7 +16,7 @@ export const Todos: React.FC<ITodosProps> = ({
           key={todo.id}
           todo={todo}
           onDeleteTodo={onDeleteTodo}
-          onSwitchCompleted={onSwitchCompleted}
+          onToggleCompleted={onToggleCompleted}
           onChangeTodoText={onChangeTodoText}
         />
       ))}

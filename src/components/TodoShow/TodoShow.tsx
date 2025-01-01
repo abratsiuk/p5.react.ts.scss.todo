@@ -5,7 +5,7 @@ import styles from './TodoShow.module.scss';
 export const TodoShow: React.FC<ITodoShowProps> = ({
   todo,
   onDeleteTodo,
-  onSwitchCompleted,
+  onToggleCompleted,
 }) => {
   const completedClassName = [
     styles.TodoShow__completed,
@@ -24,7 +24,7 @@ export const TodoShow: React.FC<ITodoShowProps> = ({
     <div className={styles.TodoShow}>
       <div
         className={completedClassName}
-        onClick={() => onSwitchCompleted(todo.id)}
+        onClick={() => onToggleCompleted(todo.id)}
       />
       <div className={textClassName}>{todo.text}</div>
       <button

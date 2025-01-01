@@ -34,7 +34,7 @@ export const Main = () => {
   const handleDeleteTodo = (id: number) => {
     setTodos(todos.filter((t) => t.id !== id));
   };
-  const onToggleComplete = (id: number) => {
+  const handleToggleCompleted = (id: number) => {
     setTodos(
       todos.map((t) =>
         t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
@@ -44,7 +44,7 @@ export const Main = () => {
   const handleChangeTodoText = (id: number, text: string) => {
     setTodos(todos.map((t) => (t.id === id ? { ...t, text } : t)));
   };
-  const onToggleCompletedAll = (completed: boolean) => {
+  const handleToggleCompletedAll = (completed: boolean) => {
     setTodos(todos.map((t) => ({ ...t, isCompleted: completed })));
   };
 
@@ -108,13 +108,13 @@ export const Main = () => {
     <div className="Main">
       <TodosToggle
         todosState={todosState}
-        onToggleCompletedAll={onToggleCompletedAll}
+        onToggleCompletedAll={handleToggleCompletedAll}
       />
       <TodoNew onAddTodo={handleAddTodo} />
       <Todos
         todos={filtered}
         onDeleteTodo={handleDeleteTodo}
-        onSwitchCompleted={onToggleComplete}
+        onToggleCompleted={handleToggleCompleted}
         onChangeTodoText={handleChangeTodoText}
       />
       <Tool

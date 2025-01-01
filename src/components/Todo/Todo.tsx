@@ -7,7 +7,7 @@ import './Todo.scss';
 export const Todo: React.FC<ITodoProps> = ({
   todo,
   onDeleteTodo,
-  onSwitchCompleted,
+  onToggleCompleted,
   onChangeTodoText,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -41,7 +41,7 @@ export const Todo: React.FC<ITodoProps> = ({
           key={todo.id}
           todo={todo}
           onDeleteTodo={onDeleteTodo}
-          onSwitchCompleted={onSwitchCompleted}
+          onToggleCompleted={onToggleCompleted}
         />
       )}
     </div>
