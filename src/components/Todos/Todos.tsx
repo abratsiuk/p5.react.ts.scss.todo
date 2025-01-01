@@ -1,9 +1,9 @@
 import React from 'react';
-import { TodosProps } from './TodosProps';
+import { ITodosProps } from './ITodosProps';
 import { Todo } from '../Todo';
 import './Todos.scss';
 
-export const Todos: React.FC<TodosProps> = ({
+export const Todos: React.FC<ITodosProps> = ({
   todos,
   onDeleteTodo,
   onSwitchCompleted,

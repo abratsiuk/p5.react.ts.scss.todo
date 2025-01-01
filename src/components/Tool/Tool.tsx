@@ -1,8 +1,8 @@
 import React from 'react';
-import { ToolProps } from './ToolProps';
+import { IToolProps } from './IToolProps';
 import './Tool.scss';
 
-export const Tool: React.FC<ToolProps> = ({
+export const Tool: React.FC<IToolProps> = ({
   todosLeft,
   todosState,
   todosFilter,

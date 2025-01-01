@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { TodoNewProps } from './TodoNewProps';
+import { ITodoNewProps } from './ITodoNewProps';
 import './TodoNew.scss';
 
-export const TodoNew: React.FC<TodoNewProps> = ({ onAddTodo }) => {
+export const TodoNew: React.FC<ITodoNewProps> = ({ onAddTodo }) => {
   const [value, setValue] = useState<string>('');
 
   return (

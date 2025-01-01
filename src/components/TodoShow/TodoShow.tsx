@@ -1,8 +1,8 @@
 import React from 'react';
-import { TodoShowProps } from './TodoShowProps';
+import { ITodoShowProps } from './ITodoShowProps';
 import styles from './TodoShow.module.scss';
 
-export const TodoShow: React.FC<TodoShowProps> = ({
+export const TodoShow: React.FC<ITodoShowProps> = ({
   todo,
   onDeleteTodo,
   onSwitchCompleted,

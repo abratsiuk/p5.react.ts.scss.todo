@@ -1,6 +1,7 @@
-import { TodoItem } from '../Todo/TodoItem';
-export interface TodoProps {
-  todo: TodoItem;
+import { ITodoItem } from '../../interfaces/ITodoItem';
+
+export interface ITodosProps {
+  todos: ITodoItem[];
   onDeleteTodo: (id: number) => void;
   onSwitchCompleted: (id: number) => void;
   onChangeTodoText: (id: number, text: string) => void;

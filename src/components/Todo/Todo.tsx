@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { TodoProps } from './TodoProps';
+import { ITodoProps } from '../../interfaces/ITodoProps';
 import { TodoShow } from '../TodoShow';
 import { TodoEdit } from '../TodoEdit';
 import './Todo.scss';
 
-export const Todo: React.FC<TodoProps> = ({
+export const Todo: React.FC<ITodoProps> = ({
   todo,
   onDeleteTodo,
   onSwitchCompleted,

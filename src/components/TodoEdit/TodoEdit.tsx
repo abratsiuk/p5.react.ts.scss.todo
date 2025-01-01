@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { TodoEditProps } from './TodoEditProps';
+import { ITodoEditProps } from './ITodoEditProps';
 import './TodoEdit.scss';
 
-export const TodoEdit: React.FC<TodoEditProps> = ({
+export const TodoEdit: React.FC<ITodoEditProps> = ({
   text,
   onEditTodo,
   onCancelEditing,

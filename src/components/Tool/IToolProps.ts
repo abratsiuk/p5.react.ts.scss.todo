@@ -1,6 +1,6 @@
 import { TTodosState } from '../../types/TTodosState';
 import { TTodosFilter } from '../../types/TTodosFilter';
-export interface ToolProps {
+export interface IToolProps {
   todosLeft: number;
   todosState: TTodosState;
   todosFilter: TTodosFilter;

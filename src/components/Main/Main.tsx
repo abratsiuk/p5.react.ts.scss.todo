@@ -3,7 +3,7 @@ import { TodoNew } from '../TodoNew';
 import { Todos } from '../Todos';
 import { Tool } from '../Tool';
 import './Main.scss';
-import { TodoItem } from '../Todo/TodoItem';
+import { ITodoItem } from '../../interfaces/ITodoItem';
 import { TTodosState } from '../../types/TTodosState';
 import { TTodosFilter } from '../../types/TTodosFilter';
 import { TodosToggle } from '../TodosToggle';
@@ -11,8 +11,8 @@ import { getTodosApi, setTodosApi } from '../../services';
 import { ITodosCount } from '../../interfaces/ITodosCount';
 
 export const Main = () => {
-  const [todos, setTodos] = useState<TodoItem[]>([]);
-  const [filtered, setFiltered] = useState<TodoItem[]>([]);
+  const [todos, setTodos] = useState<ITodoItem[]>([]);
+  const [filtered, setFiltered] = useState<ITodoItem[]>([]);
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
   const [todosLeft, setTodosLeft] = useState<number>(0);
   const [todosState, setTodosState] = useState<TTodosState>('empty');
@@ -24,7 +24,7 @@ export const Main = () => {
   });
 
   const handleAddTodo = (text: string) => {
-    const TodoNew: TodoItem = {
+    const TodoNew: ITodoItem = {
       id: Date.now(),
       text,
       isCompleted: false,

@@ -1,3 +1,3 @@
-export interface TodoNewProps {
+export interface ITodoNewProps {
   onAddTodo: (text: string) => void;
 }
