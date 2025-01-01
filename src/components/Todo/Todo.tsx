@@ -10,7 +10,7 @@ export const Todo: React.FC<ITodoProps> = ({
   onSwitchCompleted,
   onChangeTodoText,
 }) => {
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isEditing, setIsEditing] = useState(false);
   const onEditTodo = (text: string) => {
     onChangeTodoText(todo.id, text);
     setIsEditing(false);

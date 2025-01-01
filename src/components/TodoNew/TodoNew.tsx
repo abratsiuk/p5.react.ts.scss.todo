@@ -3,7 +3,7 @@ import { ITodoNewProps } from './ITodoNewProps';
 import './TodoNew.scss';
 
 export const TodoNew: React.FC<ITodoNewProps> = ({ onAddTodo }) => {
-  const [value, setValue] = useState<string>('');
+  const [value, setValue] = useState('');
 
   return (
     <div className="TodoNew">

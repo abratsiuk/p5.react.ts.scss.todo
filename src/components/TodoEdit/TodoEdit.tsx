@@ -7,7 +7,7 @@ export const TodoEdit: React.FC<ITodoEditProps> = ({
   onEditTodo,
   onCancelEditing,
 }) => {
-  const [value, setValue] = useState<string>(text);
+  const [value, setValue] = useState(text);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
