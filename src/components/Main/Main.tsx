@@ -9,9 +9,13 @@ import { TTodosFilter } from '../../types/TTodosFilter';
 import { TodosToggle } from '../TodosToggle';
 import { ITodosCount } from '../../interfaces/ITodosCount';
 import { useTodos } from '../Todos/useTodos';
+// import { useLocalStorageSync } from '../Todos/useLocalStorageSync';
+// import { useTodosSync } from '../Todos/useTodosSync';
 
 export const Main = () => {
-  const { todos, setTodos } = useTodos([]);
+  const [todos, setTodos] = useTodos('todos', []);
+  // const [todos, setTodos] = useLocalStorageSync('todos', []);
+  // const [todos, setTodos] = useTodosSync('todos', []);
   const [filtered, setFiltered] = useState<ITodoItem[]>([]);
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
   const [todosState, setTodosState] = useState<TTodosState>('empty');

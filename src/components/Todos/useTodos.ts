@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { ITodoItem } from '../../interfaces/ITodoItem';
 import { getTodosApi, setTodosApi } from '../../services';
-import { ITodosHook } from './ITodosHook';
 
-export const useTodos = (initialTodos: ITodoItem[]): ITodosHook => {
+export const useTodos = (
+  key: string,
+  initialTodos: ITodoItem[],
+): [ITodoItem[], (todos: ITodoItem[]) => void] => {
   const [todos, setTodos] = useState<ITodoItem[]>(() => {
-    return initialTodos.length ? initialTodos : getTodosApi();
+    return initialTodos.length ? initialTodos : getTodosApi(key);
   });
 
   useEffect(() => {
-    setTodosApi(todos);
-  }, [todos]);
+    setTodosApi(key, todos);
+  }, [todos, key]);
 
-  return { todos, setTodos };
+  return [todos, setTodos];
 };
