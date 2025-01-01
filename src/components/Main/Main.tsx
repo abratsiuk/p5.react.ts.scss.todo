@@ -7,15 +7,14 @@ import { ITodoItem } from '../../interfaces/ITodoItem';
 import { TTodosState } from '../../types/TTodosState';
 import { TTodosFilter } from '../../types/TTodosFilter';
 import { TodosToggle } from '../TodosToggle';
-import { getTodosApi, setTodosApi } from '../../services';
 import { ITodosCount } from '../../interfaces/ITodosCount';
+import { useTodos } from '../Todos/useTodos';
 
 export const Main = () => {
-  const [todos, setTodos] = useState<ITodoItem[]>([]);
+  const { todos, setTodos } = useTodos([]);
   const [filtered, setFiltered] = useState<ITodoItem[]>([]);
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
   const [todosState, setTodosState] = useState<TTodosState>('empty');
-  const [isInitial, setIsInitial] = useState(true);
   const [count, setCount] = useState<ITodosCount>({
     all: 0,
     active: 0,
@@ -51,17 +50,6 @@ export const Main = () => {
   const clearCompleted = () => {
     setTodos(todos.filter((t) => !t.isCompleted));
   };
-
-  useEffect(() => {
-    setTodos(getTodosApi());
-    setIsInitial(false);
-  }, []);
-
-  useEffect(() => {
-    if (!isInitial) {
-      setTodosApi(todos);
-    }
-  }, [todos, isInitial]);
 
   useEffect(() => {
     switch (todosFilter) {
