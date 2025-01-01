@@ -22,7 +22,7 @@ export const Main = () => {
     completed: 0,
   });
 
-  const handleAddTodo = (text: string) => {
+  const addTodo = (text: string) => {
     const TodoNew: ITodoItem = {
       id: Date.now(),
       text,
@@ -31,7 +31,7 @@ export const Main = () => {
     setTodos([...todos, TodoNew]);
   };
 
-  const handleDeleteTodo = (id: number) => {
+  const deleteTodo = (id: number) => {
     setTodos(todos.filter((t) => t.id !== id));
   };
   const handleToggleCompleted = (id: number) => {
@@ -41,14 +41,14 @@ export const Main = () => {
       ),
     );
   };
-  const handleChangeTodoText = (id: number, text: string) => {
+  const changeTodoText = (id: number, text: string) => {
     setTodos(todos.map((t) => (t.id === id ? { ...t, text } : t)));
   };
-  const handleToggleCompletedAll = (completed: boolean) => {
+  const toggleCompletedAll = (completed: boolean) => {
     setTodos(todos.map((t) => ({ ...t, isCompleted: completed })));
   };
 
-  const handleClearCompleted = () => {
+  const clearCompleted = () => {
     setTodos(todos.filter((t) => !t.isCompleted));
   };
 
@@ -108,14 +108,14 @@ export const Main = () => {
     <div className="Main">
       <TodosToggle
         todosState={todosState}
-        onToggleCompletedAll={handleToggleCompletedAll}
+        onToggleCompletedAll={toggleCompletedAll}
       />
-      <TodoNew onAddTodo={handleAddTodo} />
+      <TodoNew onAddTodo={addTodo} />
       <Todos
         todos={filtered}
-        onDeleteTodo={handleDeleteTodo}
+        onDeleteTodo={deleteTodo}
         onToggleCompleted={handleToggleCompleted}
-        onChangeTodoText={handleChangeTodoText}
+        onChangeTodoText={changeTodoText}
       />
       <Tool
         todosLeft={count.active}
@@ -124,7 +124,7 @@ export const Main = () => {
         onAll={() => setTodosFilter('all')}
         onActive={() => setTodosFilter('active')}
         onCompleted={() => setTodosFilter('completed')}
-        onClearCompleted={handleClearCompleted}
+        onClearCompleted={clearCompleted}
       />
     </div>
   );
