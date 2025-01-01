@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ITodoProps } from '../../interfaces/ITodoProps';
+import { ITodoProps } from './ITodoProps';
 import { TodoShow } from '../TodoShow';
 import { TodoEdit } from '../TodoEdit';
 import './Todo.scss';

@@ -14,7 +14,6 @@ export const Main = () => {
   const [todos, setTodos] = useState<ITodoItem[]>([]);
   const [filtered, setFiltered] = useState<ITodoItem[]>([]);
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
-  const [todosLeft, setTodosLeft] = useState(0);
   const [todosState, setTodosState] = useState<TTodosState>('empty');
   const [isInitial, setIsInitial] = useState(true);
   const [count, setCount] = useState<ITodosCount>({
