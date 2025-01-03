@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { TodoNew } from '../TodoNew';
 import { Todos } from '../Todos';
 import { Tool } from '../Tool';
@@ -12,14 +12,51 @@ import { useTodos } from '../Todos/useTodos';
 
 export const Main = () => {
   const [todos, setTodos] = useTodos('todos', []);
-  const [filtered, setFiltered] = useState<ITodoItem[]>([]);
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
-  const [todosState, setTodosState] = useState<TTodosState>('empty');
-  const [count, setCount] = useState<ITodosCount>({
-    all: 0,
-    active: 0,
-    completed: 0,
-  });
+
+  const getFilteredTodos = (
+    todos: ITodoItem[],
+    todosFilter: TTodosFilter,
+  ): ITodoItem[] => {
+    switch (todosFilter) {
+      case 'all':
+        return todos;
+      case 'active':
+        return todos.filter((t) => !t.isCompleted);
+      case 'completed':
+        return todos.filter((t) => t.isCompleted);
+    }
+  };
+  const getCountTodos = (todos: ITodoItem[]): ITodosCount => {
+    const allCount = todos.length;
+    const completedCount =
+      allCount > 0
+        ? todos.reduce((completed, todo) => {
+            return completed + (todo.isCompleted ? 1 : 0);
+          }, 0)
+        : 0;
+    const activeCount = allCount - completedCount;
+    return { all: allCount, active: activeCount, completed: completedCount };
+  };
+  const getStateTodos = (count: ITodosCount): TTodosState => {
+    if (count.all == 0) {
+      return 'empty';
+    } else if (count.active > 0 && count.completed == 0) {
+      return 'allActive';
+    } else if (count.active > 0 && count.completed > 0) {
+      return 'anyActive-anyCompleted';
+    } else if (count.active == 0 && count.completed > 0) {
+      return 'allCompleted';
+    }
+    return 'empty';
+  };
+
+  const filtered = useMemo<ITodoItem[]>(
+    () => getFilteredTodos(todos, todosFilter),
+    [todos, todosFilter],
+  );
+  const count = useMemo<ITodosCount>(() => getCountTodos(todos), [todos]);
+  const todosState = useMemo<TTodosState>(() => getStateTodos(count), [count]);
 
   const addTodo = (text: string) => {
     const TodoNew: ITodoItem = {
@@ -29,7 +66,6 @@ export const Main = () => {
     };
     setTodos([...todos, TodoNew]);
   };
-
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((t) => t.id !== id));
   };
@@ -46,51 +82,9 @@ export const Main = () => {
   const toggleCompletedAll = (completed: boolean) => {
     setTodos(todos.map((t) => ({ ...t, isCompleted: completed })));
   };
-
   const clearCompleted = () => {
     setTodos(todos.filter((t) => !t.isCompleted));
   };
-
-  useEffect(() => {
-    switch (todosFilter) {
-      case 'all':
-        setFiltered(todos);
-        break;
-      case 'active':
-        setFiltered(todos.filter((t) => !t.isCompleted));
-        break;
-      case 'completed':
-        setFiltered(todos.filter((t) => t.isCompleted));
-        break;
-    }
-  }, [todos, todosFilter]);
-
-  useEffect(() => {
-    setCount(() => {
-      const allCount = todos.length;
-      const completedCount = todos.reduce((completed, todo) => {
-        return completed + (todo.isCompleted ? 1 : 0);
-      }, 0);
-      const activeCount = allCount - completedCount;
-      return { all: allCount, active: activeCount, completed: completedCount };
-    });
-  }, [todos]);
-
-  useEffect(() => {
-    setTodosState(() => {
-      let newState: TTodosState = 'empty';
-      if (count.all == 0) {
-        newState = 'empty';
-      } else if (count.active > 0 && count.completed == 0) {
-        newState = 'allActive';
-      } else if (count.active > 0 && count.completed > 0) {
-        newState = 'anyActive-anyCompleted';
-      } else if (count.active == 0 && count.completed > 0) {
-        newState = 'allCompleted';
-      }
-      return newState;
-    });
-  }, [count]);
 
   return (
     <div className="Main">
