@@ -12,12 +12,6 @@ export const Tool: React.FC<IToolProps> = memo(
     onCompleted,
     onClearCompleted,
   }) => {
-    const handleFilterAll = useCallback(() => setTodosFilter('all'), []);
-    const handleFilterActive = useCallback(() => setTodosFilter('active'), []);
-    const handleFilterCompleted = useCallback(
-      () => setTodosFilter('completed'),
-      [],
-    );
     const toolClassName = [
       'Tool',
       todosState === 'empty' ? 'Tool_hide' : '',
