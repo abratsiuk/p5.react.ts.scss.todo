@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import { ITodoNewProps } from './ITodoNewProps';
 import './TodoNew.scss';
 
-export const TodoNew: React.FC<ITodoNewProps> = ({ onAddTodo }) => {
+export const TodoNew: React.FC<ITodoNewProps> = memo(({ onAddTodo }) => {
   const [value, setValue] = useState('');
 
   return (
@@ -27,4 +27,4 @@ export const TodoNew: React.FC<ITodoNewProps> = ({ onAddTodo }) => {
       />
     </div>
   );
-};
+});

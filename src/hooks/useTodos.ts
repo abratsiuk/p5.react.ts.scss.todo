@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { ITodoItem } from '../../interfaces/ITodoItem';
-import { getTodosApi, setTodosApi } from '../../services';
+import { ITodoItem } from '../interfaces/ITodoItem';
+import { getTodosApi, setTodosApi } from '../services';
 
 export const useTodos = (
   key: string,
