@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ITodoEditProps } from './ITodoEditProps';
 import './TodoEdit.scss';
 
@@ -8,13 +8,6 @@ export const TodoEdit: React.FC<ITodoEditProps> = ({
   onCancelEditing,
 }) => {
   const [value, setValue] = useState(text);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
 
   return (
     <div className="TodoEdit">
@@ -34,7 +27,7 @@ export const TodoEdit: React.FC<ITodoEditProps> = ({
           }
         }}
         onBlur={onCancelEditing}
-        ref={inputRef}
+        autoFocus
       />
     </div>
   );
