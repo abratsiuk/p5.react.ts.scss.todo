@@ -14,10 +14,7 @@ export const Main = () => {
   const [todos, setTodos] = useTodos('todos', []);
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
 
-  const getFilteredTodos = (
-    todos: ITodoItem[],
-    todosFilter: TTodosFilter,
-  ): ITodoItem[] => {
+  const filtered = useMemo<ITodoItem[]>(() => {
     switch (todosFilter) {
       case 'all':
         return todos;
@@ -26,8 +23,9 @@ export const Main = () => {
       case 'completed':
         return todos.filter((t) => t.isCompleted);
     }
-  };
-  const getCountTodos = (todos: ITodoItem[]): ITodosCount => {
+  }, [todos, todosFilter]);
+
+  const count = useMemo<ITodosCount>(() => {
     const allCount = todos.length;
     const completedCount =
       allCount > 0
@@ -37,8 +35,9 @@ export const Main = () => {
         : 0;
     const activeCount = allCount - completedCount;
     return { all: allCount, active: activeCount, completed: completedCount };
-  };
-  const getStateTodos = (count: ITodosCount): TTodosState => {
+  }, [todos]);
+
+  const todosState = useMemo<TTodosState>(() => {
     if (count.all == 0) {
       return 'empty';
     } else if (count.active > 0 && count.completed == 0) {
@@ -49,14 +48,7 @@ export const Main = () => {
       return 'allCompleted';
     }
     return 'empty';
-  };
-
-  const filtered = useMemo<ITodoItem[]>(
-    () => getFilteredTodos(todos, todosFilter),
-    [todos, todosFilter],
-  );
-  const count = useMemo<ITodosCount>(() => getCountTodos(todos), [todos]);
-  const todosState = useMemo<TTodosState>(() => getStateTodos(count), [count]);
+  }, [count]);
 
   const addTodo = (text: string) => {
     const TodoNew: ITodoItem = {
@@ -66,9 +58,11 @@ export const Main = () => {
     };
     setTodos([...todos, TodoNew]);
   };
+
   const deleteTodo = (id: number) => {
     setTodos(todos.filter((t) => t.id !== id));
   };
+
   const handleToggleCompleted = (id: number) => {
     setTodos(
       todos.map((t) =>
@@ -76,12 +70,15 @@ export const Main = () => {
       ),
     );
   };
+
   const changeTodoText = (id: number, text: string) => {
     setTodos(todos.map((t) => (t.id === id ? { ...t, text } : t)));
   };
+
   const toggleCompletedAll = (completed: boolean) => {
     setTodos(todos.map((t) => ({ ...t, isCompleted: completed })));
   };
+
   const clearCompleted = () => {
     setTodos(todos.filter((t) => !t.isCompleted));
   };
