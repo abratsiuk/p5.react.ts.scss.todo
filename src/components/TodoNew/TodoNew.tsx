@@ -28,3 +28,5 @@ export const TodoNew: React.FC<ITodoNewProps> = memo(({ onAddTodo }) => {
     </div>
   );
 });
+
+TodoNew.displayName = 'TodoNew';

@@ -32,3 +32,5 @@ export const TodoShow: React.FC<ITodoShowProps> = memo(
     );
   },
 );
+
+TodoShow.displayName = 'TodoShow';

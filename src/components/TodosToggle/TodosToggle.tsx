@@ -26,3 +26,5 @@ export const TodosToggle: React.FC<ITodosToggleProps> = memo(
     );
   },
 );
+
+TodosToggle.displayName = 'TodosToggle';

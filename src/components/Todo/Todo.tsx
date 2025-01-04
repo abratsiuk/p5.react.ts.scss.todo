@@ -14,6 +14,7 @@ export const Todo: React.FC<ITodoProps> = memo(
     onChangeTodoText,
   }) => {
     const [isEditing, setIsEditing] = useState(false);
+
     const onConfirmEditing = (text: string) => {
       onChangeTodoText(id, text);
       setIsEditing(false);
@@ -53,3 +54,5 @@ export const Todo: React.FC<ITodoProps> = memo(
     );
   },
 );
+
+Todo.displayName = 'Todo';

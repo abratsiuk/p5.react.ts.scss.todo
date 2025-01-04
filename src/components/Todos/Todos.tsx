@@ -20,3 +20,5 @@ export const Todos: React.FC<ITodosProps> = memo(
     );
   },
 );
+
+Todos.displayName = 'Todos';

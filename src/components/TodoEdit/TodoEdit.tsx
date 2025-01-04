@@ -35,3 +35,5 @@ export const TodoEdit: React.FC<ITodoEditProps> = memo(
     );
   },
 );
+
+TodoEdit.displayName = 'TodoEdit';

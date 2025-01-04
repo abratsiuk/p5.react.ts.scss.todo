@@ -58,3 +58,5 @@ export const Tool: React.FC<IToolProps> = memo(
     );
   },
 );
+
+Tool.displayName = 'Tool';
