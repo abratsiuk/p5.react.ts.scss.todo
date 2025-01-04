@@ -5,10 +5,17 @@ import { TodoEdit } from '../TodoEdit';
 import './Todo.scss';
 
 export const Todo: React.FC<ITodoProps> = memo(
-  ({ todo, onDeleteTodo, onToggleCompleted, onChangeTodoText }) => {
+  ({
+    id,
+    text,
+    isCompleted,
+    onDeleteTodo,
+    onToggleCompleted,
+    onChangeTodoText,
+  }) => {
     const [isEditing, setIsEditing] = useState(false);
     const onEditTodo = (text: string) => {
-      onChangeTodoText(todo.id, text);
+      onChangeTodoText(id, text);
       setIsEditing(false);
     };
     const onCancelEditing = () => {
@@ -27,15 +34,17 @@ export const Todo: React.FC<ITodoProps> = memo(
       >
         {isEditing ? (
           <TodoEdit
-            key={todo.id}
-            text={todo.text}
+            key={id}
+            text={text}
             onEditTodo={onEditTodo}
             onCancelEditing={onCancelEditing}
           />
         ) : (
           <TodoShow
-            key={todo.id}
-            todo={todo}
+            key={id}
+            id={id}
+            text={text}
+            isCompleted={isCompleted}
             onDeleteTodo={onDeleteTodo}
             onToggleCompleted={onToggleCompleted}
           />

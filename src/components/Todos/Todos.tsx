@@ -10,7 +10,7 @@ export const Todos: React.FC<ITodosProps> = memo(
         {todos.map((todo) => (
           <Todo
             key={todo.id}
-            todo={todo}
+            {...todo}
             onDeleteTodo={onDeleteTodo}
             onToggleCompleted={onToggleCompleted}
             onChangeTodoText={onChangeTodoText}

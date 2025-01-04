@@ -3,16 +3,16 @@ import { ITodoShowProps } from './ITodoShowProps';
 import styles from './TodoShow.module.scss';
 
 export const TodoShow: React.FC<ITodoShowProps> = memo(
-  ({ todo, onDeleteTodo, onToggleCompleted }) => {
+  ({ id, text, isCompleted, onDeleteTodo, onToggleCompleted }) => {
     const completedClassName = [
       styles.TodoShow__completed,
-      todo.isCompleted
+      isCompleted
         ? styles.TodoShow__completed_completed
         : styles.TodoShow__completed_active,
     ].join(' ');
     const textClassName = [
       styles.TodoShow__text,
-      todo.isCompleted
+      isCompleted
         ? styles.TodoShow__text_completed
         : styles.TodoShow__text_active,
     ].join(' ');
@@ -21,12 +21,12 @@ export const TodoShow: React.FC<ITodoShowProps> = memo(
       <div className={styles.TodoShow}>
         <div
           className={completedClassName}
-          onClick={() => onToggleCompleted(todo.id)}
+          onClick={() => onToggleCompleted(id)}
         />
-        <div className={textClassName}>{todo.text}</div>
+        <div className={textClassName}>{text}</div>
         <button
           className={styles.TodoShow__delete}
-          onClick={() => onDeleteTodo(todo.id)}
+          onClick={() => onDeleteTodo(id)}
         ></button>
       </div>
     );
