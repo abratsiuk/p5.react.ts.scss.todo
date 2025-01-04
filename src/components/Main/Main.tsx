@@ -52,51 +52,66 @@ export const Main = () => {
 
   const addTodo = useCallback(
     (text: string) => {
-      const TodoNew: ITodoItem = {
-        id: Date.now(),
-        text,
-        isCompleted: false,
-      };
-      setTodos([...todos, TodoNew]);
+      setTodos((prevTodos: ITodoItem[]) => {
+        return [
+          ...prevTodos,
+          {
+            id: Date.now(),
+            text,
+            isCompleted: false,
+          },
+        ];
+      });
     },
-    [todos, setTodos],
+    [setTodos],
   );
 
   const deleteTodo = useCallback(
     (id: number) => {
-      setTodos(todos.filter((t) => t.id !== id));
+      setTodos((prevTodos: ITodoItem[]) => {
+        return prevTodos.filter((t) => t.id !== id);
+      });
     },
-    [todos, setTodos],
+    [setTodos],
   );
 
   const handleToggleCompleted = useCallback(
     (id: number) => {
-      setTodos(
-        todos.map((t) =>
+      setTodos((prevTodos: ITodoItem[]) => {
+        return prevTodos.map((t) =>
           t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
-        ),
-      );
+        );
+      });
     },
-    [todos, setTodos],
+    [setTodos],
   );
 
   const changeTodoText = useCallback(
     (id: number, text: string) => {
-      setTodos(todos.map((t) => (t.id === id ? { ...t, text } : t)));
+      setTodos((prevTodos: ITodoItem[]) => {
+        return prevTodos.map((t) => (t.id === id ? { ...t, text } : t));
+      });
     },
-    [todos, setTodos],
+    [setTodos],
   );
 
   const toggleCompletedAll = useCallback(
     (completed: boolean) => {
-      setTodos(todos.map((t) => ({ ...t, isCompleted: completed })));
+      setTodos((prevTodos: ITodoItem[]) => {
+        return prevTodos.map<ITodoItem>((t: ITodoItem) => ({
+          ...t,
+          isCompleted: completed,
+        }));
+      });
     },
-    [todos, setTodos],
+    [setTodos],
   );
 
   const clearCompleted = useCallback(() => {
-    setTodos(todos.filter((t) => !t.isCompleted));
-  }, [todos, setTodos]);
+    setTodos((prevTodos: ITodoItem[]) => {
+      return prevTodos.filter((t) => !t.isCompleted);
+    });
+  }, [setTodos]);
 
   const handleFilterAll = useCallback(() => setTodosFilter('all'), []);
   const handleFilterActive = useCallback(() => setTodosFilter('active'), []);
