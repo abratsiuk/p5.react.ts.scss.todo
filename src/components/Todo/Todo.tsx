@@ -14,7 +14,7 @@ export const Todo: React.FC<ITodoProps> = memo(
     onChangeTodoText,
   }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const onEditTodo = (text: string) => {
+    const onConfirmEditing = (text: string) => {
       onChangeTodoText(id, text);
       setIsEditing(false);
     };
@@ -36,7 +36,7 @@ export const Todo: React.FC<ITodoProps> = memo(
           <TodoEdit
             key={id}
             text={text}
-            onEditTodo={onEditTodo}
+            onConfirmEditing={onConfirmEditing}
             onCancelEditing={onCancelEditing}
           />
         ) : (

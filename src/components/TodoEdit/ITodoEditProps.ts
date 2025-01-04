@@ -1,5 +1,5 @@
 export interface ITodoEditProps {
   text: string;
-  onEditTodo: (text: string) => void;
+  onConfirmEditing: (text: string) => void;
   onCancelEditing: () => void;
 }

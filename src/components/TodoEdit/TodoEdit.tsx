@@ -3,7 +3,7 @@ import { ITodoEditProps } from './ITodoEditProps';
 import './TodoEdit.scss';
 
 export const TodoEdit: React.FC<ITodoEditProps> = memo(
-  ({ text, onEditTodo, onCancelEditing }) => {
+  ({ text, onConfirmEditing, onCancelEditing }) => {
     const [value, setValue] = useState(text);
 
     return (
@@ -17,9 +17,14 @@ export const TodoEdit: React.FC<ITodoEditProps> = memo(
           onChange={(event) => setValue(event.target.value)}
           onKeyDown={(event) => {
             if (event.code === 'Enter') {
-              onEditTodo(value);
-            }
-            if (event.code === 'Escape') {
+              if (value.trim() === '') {
+                onCancelEditing();
+              } else if (value.trim() !== text) {
+                onConfirmEditing(value);
+              } else {
+                onCancelEditing();
+              }
+            } else if (event.code === 'Escape') {
               onCancelEditing();
             }
           }}
