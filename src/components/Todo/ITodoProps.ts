@@ -1,4 +1,4 @@
-import { ITodoItem } from './ITodoItem';
+import { ITodoItem } from '../..interfaces/ITodoItem';
 export interface ITodoProps {
   todo: ITodoItem;
   onDeleteTodo: (id: number) => void;
