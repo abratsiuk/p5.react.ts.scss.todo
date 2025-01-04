@@ -17,7 +17,7 @@
         display: inline-block;
         transform-origin: center;
         transform: rotate(-90deg) scaleX(0.8) scaleY(1.7);
-        transition: color 0.2s ease-out;
+        transition: $color_transition;
       }
     }
     &_toAllActive {

@@ -9,7 +9,7 @@ export const TodoEdit: React.FC<ITodoEditProps> = memo(
     return (
       <div className="TodoEdit">
         <input
-          className="TodoEdit__text"
+          className={`TodoEdit__text ${value.trim() === '' ? 'TodoEdit__text_empty' : ''}`}
           type="text"
           name="TodoEdit"
           id="TodoEdit"

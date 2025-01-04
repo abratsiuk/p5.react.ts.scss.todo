@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react';
+import React, { useState, memo, useCallback } from 'react';
 import { ITodoProps } from './ITodoProps';
 import { TodoShow } from '../TodoShow';
 import { TodoEdit } from '../TodoEdit';
@@ -15,23 +15,23 @@ export const Todo: React.FC<ITodoProps> = memo(
   }) => {
     const [isEditing, setIsEditing] = useState(false);
 
-    const onConfirmEditing = (text: string) => {
-      onChangeTodoText(id, text);
-      setIsEditing(false);
-    };
-    const onCancelEditing = () => {
-      setIsEditing(false);
-    };
-    const onBlur = () => {
-      if (isEditing) {
+    const onConfirmEditing = useCallback(
+      (text: string) => {
+        onChangeTodoText(id, text);
         setIsEditing(false);
-      }
-    };
+      },
+      [id, onChangeTodoText],
+    );
+
+    const onCancelEditing = useCallback(() => {
+      setIsEditing(false);
+    }, []);
+
     return (
       <div
         className="Todo"
         onDoubleClick={() => setIsEditing(!isEditing)}
-        onBlur={onBlur}
+        onBlur={onCancelEditing}
       >
         {isEditing ? (
           <TodoEdit

@@ -15,5 +15,10 @@
       inset -1px -1px 1px 0px $Tool-box-shadow-color-fill-end,
       inset 1px 1px 1px 0px $Tool-box-shadow-color-fill-end;
     outline: none;
+    &_empty {
+      box-shadow:
+        inset -1px -1px 1px 0px $TodoShow__delete-color,
+        inset 1px 1px 1px 0px $TodoShow__delete-color;
+    }
   }
 }

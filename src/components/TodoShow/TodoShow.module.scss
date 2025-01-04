@@ -17,7 +17,7 @@
     border-radius: 50%;
     border: 1px solid $Todo__completed_active-border-color;
     font-size: 3rem;
-    transition: color 0.2s ease-out;
+    transition: $color_transition;
     &_active {
       border: 1px solid $Todo__completed_active-border-color;
     }
@@ -30,7 +30,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: color 0.2s ease-out;
+      transition: $color_transition;
       &::after {
         content: '\2713';
         font-size: 2.2rem;
@@ -41,12 +41,12 @@
   &__text {
     grid-column: 2/3;
     padding: $Todo__text-padding;
-    transition: color 0.2s ease-out;
+    transition: $color_transition;
     &_active {
     }
     &_completed {
       text-decoration: line-through;
-      color: #d9d9d9;
+      color: $TodoShow__text_completed-color;
     }
   }
   &__delete {
@@ -62,14 +62,14 @@
     height: 4rem;
     margin: auto 0;
     font-size: 3rem;
-    color: #cc9a9a;
+    color: $TodoShow__delete-color;
     margin-bottom: 1.1rem;
     &::after {
       content: '\00D7';
     }
     &:hover {
-      transition: color 0.2s ease-out;
-      color: #af5b5e;
+      transition: $color_transition;
+      color: $TodoShow__delete_hover-color;
     }
   }
 
