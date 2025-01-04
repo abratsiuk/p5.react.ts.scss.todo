@@ -7,7 +7,7 @@ import { ITodoItem } from '../../interfaces/ITodoItem';
 import { TTodosState } from '../../types/TTodosState';
 import { TTodosFilter } from '../../types/TTodosFilter';
 import { TodosToggle } from '../TodosToggle';
-import { ITodosCount } from '../../interfaces/ITodosCount';
+import { ITodosKindsNumber } from '../../interfaces/ITodosKindsNumber';
 import { useTodos } from '../../hooks/useTodos';
 
 export const Main = () => {
@@ -25,30 +25,30 @@ export const Main = () => {
     }
   }, [todos, todosFilter]);
 
-  const count = useMemo<ITodosCount>(() => {
-    const allCount = todos.length;
-    const completedCount =
-      allCount > 0
+  const todosKindsNumber = useMemo<ITodosKindsNumber>(() => {
+    const all = todos.length;
+    const completed =
+      all > 0
         ? todos.reduce((completed, todo) => {
             return completed + (todo.isCompleted ? 1 : 0);
           }, 0)
         : 0;
-    const activeCount = allCount - completedCount;
-    return { all: allCount, active: activeCount, completed: completedCount };
+    const active = all - completed;
+    return { all, active, completed };
   }, [todos]);
 
   const todosState = useMemo<TTodosState>(() => {
-    if (count.all == 0) {
+    if (todosKindsNumber.all == 0) {
       return 'empty';
-    } else if (count.active > 0 && count.completed == 0) {
+    } else if (todosKindsNumber.active > 0 && todosKindsNumber.completed == 0) {
       return 'allActive';
-    } else if (count.active > 0 && count.completed > 0) {
+    } else if (todosKindsNumber.active > 0 && todosKindsNumber.completed > 0) {
       return 'anyActive-anyCompleted';
-    } else if (count.active == 0 && count.completed > 0) {
+    } else if (todosKindsNumber.active == 0 && todosKindsNumber.completed > 0) {
       return 'allCompleted';
     }
     return 'empty';
-  }, [count]);
+  }, [todosKindsNumber]);
 
   const addTodo = useCallback(
     (text: string) => {
@@ -134,7 +134,7 @@ export const Main = () => {
         onChangeTodoText={changeTodoText}
       />
       <Tool
-        todosLeft={count.active}
+        todosLeft={todosKindsNumber.active}
         todosState={todosState}
         todosFilter={todosFilter}
         onAll={handleFilterAll}
