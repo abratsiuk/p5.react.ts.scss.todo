@@ -1,22 +1,19 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import postcssNormalize from 'postcss-normalize';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: '/p5.todos/',
   server: {
-    historyApiFallback: true, // for React Router
+    open: '/p5.todos/',
   },
   css: {
-    postcss: {
-      plugins: [
-        postcssNormalize(), // for normalize.css
-      ],
-    },
     preprocessorOptions: {
       scss: {
-        additionalData: `@use '/src/styles/variables.scss' as *;`,
+        additionalData: `
+        $base-path: '/p5.todos/';
+        @use '/src/styles/variables.scss' as *;`,
       },
     },
   },
