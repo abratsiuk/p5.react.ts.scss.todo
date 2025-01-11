@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { TodoNew } from '../TodoNew';
 import { Todos } from '../Todos';
 import { Tool } from '../Tool';
