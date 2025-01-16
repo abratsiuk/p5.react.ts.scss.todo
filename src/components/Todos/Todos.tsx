@@ -1,24 +1,18 @@
-import React, { memo } from 'react';
-import { ITodosProps } from './ITodosProps';
+import { memo } from 'react';
 import { Todo } from '../Todo';
 import './Todos.scss';
+import { useDataContext } from '../../hooks/useDataContext';
 
-export const Todos: React.FC<ITodosProps> = memo(
-  ({ todos, onDeleteTodo, onToggleCompleted, onChangeTodoText }) => {
-    return (
-      <div className="Todos">
-        {todos.map((todo) => (
-          <Todo
-            key={todo.id}
-            {...todo}
-            onDeleteTodo={onDeleteTodo}
-            onToggleCompleted={onToggleCompleted}
-            onChangeTodoText={onChangeTodoText}
-          />
-        ))}
-      </div>
-    );
-  },
-);
+export const Todos = memo(() => {
+  const { filtered } = useDataContext();
+
+  return (
+    <div className="Todos">
+      {filtered.map((todo) => (
+        <Todo key={todo.id} {...todo} />
+      ))}
+    </div>
+  );
+});
 
 Todos.displayName = 'Todos';

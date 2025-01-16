@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
 import { ITodoShowProps } from './ITodoShowProps';
 import styles from './TodoShow.module.scss';
+import { useActionContext } from '../../hooks/useActionContext';
 
 export const TodoShow: React.FC<ITodoShowProps> = memo(
-  ({ id, text, isCompleted, onDeleteTodo, onToggleCompleted }) => {
+  ({ id, text, isCompleted }) => {
+    const { deleteTodo, handleToggleCompleted } = useActionContext();
     const completedClassName = [
       styles.TodoShow__completed,
       isCompleted
@@ -21,12 +23,12 @@ export const TodoShow: React.FC<ITodoShowProps> = memo(
       <div className={styles.TodoShow}>
         <div
           className={completedClassName}
-          onClick={() => onToggleCompleted(id)}
+          onClick={() => handleToggleCompleted(id)}
         />
         <div className={textClassName}>{text}</div>
         <button
           className={styles.TodoShow__delete}
-          onClick={() => onDeleteTodo(id)}
+          onClick={() => deleteTodo(id)}
         ></button>
       </div>
     );

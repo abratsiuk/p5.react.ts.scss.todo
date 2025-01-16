@@ -1,8 +1,9 @@
-import React, { useState, memo } from 'react';
-import { ITodoNewProps } from './ITodoNewProps';
+import { useState, memo } from 'react';
 import './TodoNew.scss';
+import { useActionContext } from '../../hooks/useActionContext';
 
-export const TodoNew: React.FC<ITodoNewProps> = memo(({ onAddTodo }) => {
+export const TodoNew = memo(() => {
+  const { addTodo } = useActionContext();
   const [value, setValue] = useState('');
 
   return (
@@ -17,7 +18,7 @@ export const TodoNew: React.FC<ITodoNewProps> = memo(({ onAddTodo }) => {
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(event) => {
           if (event.code === 'Enter') {
-            if (value.trim()) onAddTodo(value.trim());
+            if (value.trim()) addTodo(value.trim());
             setValue('');
           }
           if (event.code === 'Escape') {
