@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
-import { ITodoShowProps } from './ITodoShowProps';
+import { ITodoItem } from '../../interfaces/ITodoItem';
 import styles from './TodoShow.module.scss';
 import { useActionContext } from '../../hooks/useActionContext';
 
-export const TodoShow: React.FC<ITodoShowProps> = memo(
+export const TodoShow: React.FC<ITodoItem> = memo(
   ({ id, text, isCompleted }) => {
     const { deleteTodo, handleToggleCompleted } = useActionContext();
     const completedClassName = [

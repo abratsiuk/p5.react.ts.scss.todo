@@ -1,4 +1,4 @@
-import { ITodoItem } from '../../interfaces/ITodoItem';
+import { ITodoItem } from './ITodoItem';
 
 export interface ITodosHook {
   todos: ITodoItem[];

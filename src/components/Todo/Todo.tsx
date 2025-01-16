@@ -6,7 +6,7 @@ import './Todo.scss';
 import { useActionContext } from '../../hooks/useActionContext';
 
 export const Todo: React.FC<ITodoItem> = memo(({ id, text, isCompleted }) => {
-  const { handleToggleCompleted, changeTodoText } = useActionContext();
+  const { changeTodoText } = useActionContext();
   const [isEditing, setIsEditing] = useState(false);
 
   const onConfirmEditing = useCallback(

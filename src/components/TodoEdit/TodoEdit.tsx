@@ -1,5 +1,5 @@
 import React, { useState, memo } from 'react';
-import { ITodoEditProps } from './ITodoEditProps';
+import { ITodoEditProps } from '../../interfaces/ITodoEditProps';
 import './TodoEdit.scss';
 
 export const TodoEdit: React.FC<ITodoEditProps> = memo(
