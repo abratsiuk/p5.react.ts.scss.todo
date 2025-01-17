@@ -20,9 +20,6 @@
   &__completed {
     grid-column: 5/6;
   }
-  &__removeCompletedTodos {
-    grid-column: 7/8;
-  }
 
   &_hide {
     display: none;
@@ -56,6 +53,7 @@
   }
 
   &__removeCompletedTodos {
+    grid-column: 7/8;
     text-align: right;
     &:not(&_noCompleted):hover {
       text-decoration: underline;
