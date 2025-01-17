@@ -9,7 +9,7 @@ import { ITodosKindsNumber } from '../../interfaces/ITodosKindsNumber';
 import { useTodos } from '../../hooks/useTodos';
 
 export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [todos, setTodos] = useTodos('todos', []);
+  const [todos, setTodos] = useTodos();
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
 
   const filtered = useMemo<ITodoItem[]>(() => {

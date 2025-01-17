@@ -2,25 +2,21 @@ import { useState, useEffect, useRef } from 'react';
 import { ITodoItem } from '../interfaces/ITodoItem';
 import { getTodosApi, setTodosApi } from '../services';
 
-export const useTodos = (
-  key: string,
-  initialTodos: ITodoItem[],
-): [
+export const useTodos = (): [
   ITodoItem[],
   (todos: ITodoItem[] | ((prevTodos: ITodoItem[]) => ITodoItem[])) => void,
 ] => {
   const initialTodosRef = useRef(true);
-  const [todos, setTodos] = useState<ITodoItem[]>(() => {
-    return initialTodos.length ? initialTodos : getTodosApi(key);
-  });
+  const [todos, setTodos] = useState<ITodoItem[]>(getTodosApi());
 
   useEffect(() => {
+    // Skip setTodosApi for the first render
     if (initialTodosRef.current) {
       initialTodosRef.current = false;
       return;
     }
-    setTodosApi(key, todos);
-  }, [todos, key]);
+    setTodosApi(todos);
+  }, [todos]);
 
   return [todos, setTodos];
 };
