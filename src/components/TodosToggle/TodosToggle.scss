@@ -2,13 +2,16 @@
   position: absolute;
   top: 1.9rem;
   left: 1rem;
+
   &__toggle {
     border: none;
     outline: none;
     background-color: $TodoNew-background-color;
+
     &_hide {
       display: none;
     }
+
     &_toAllActive,
     &_toAllCompleted {
       &::after {
@@ -20,11 +23,13 @@
         transition: $color_transition;
       }
     }
+
     &_toAllActive {
       &::after {
         color: #737373;
       }
     }
+
     &_toAllCompleted {
       &::after {
         color: #e6e6e6;

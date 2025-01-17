@@ -1,22 +1,24 @@
 .Tool {
-  background-color: #ffffff;
+  background-color: #fff;
   font-size: 1.4rem;
-
   display: grid;
   grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 3fr;
   align-items: center;
-
   padding: 0.5rem 2rem;
   position: relative;
+
   &__info {
     grid-column: 1/2;
   }
+
   &__all {
     grid-column: 3/4;
   }
+
   &__active {
     grid-column: 4/5;
   }
+
   &__completed {
     grid-column: 5/6;
   }
@@ -42,10 +44,12 @@
     margin: 0.3rem;
     text-align: center;
     padding: 0 0.7rem;
+
     &_selected {
       border: 1px solid #efd5d5;
       border-radius: 3px;
     }
+
     &:not(&_selected):hover {
       border-radius: 3px;
       outline: 1px solid #f7e9e9;
@@ -55,9 +59,11 @@
   &__removeCompletedTodos {
     grid-column: 7/8;
     text-align: right;
+
     &:not(&_noCompleted):hover {
       text-decoration: underline;
     }
+
     &_noCompleted {
       display: none;
     }
@@ -69,6 +75,7 @@
       0 8px 0 -3px $Tool-box-shadow-color-fill,
       0 9px 1px -3px $Tool-box-shadow-color-line;
   }
+
   &_2 {
     box-shadow:
       0 1px 1px $Tool-box-shadow-color-line,
@@ -77,6 +84,7 @@
       0 16px 0 -6px $Tool-box-shadow-color-fill,
       0 17px 2px -6px $Tool-box-shadow-color-line;
   }
+
   &_3 {
     box-shadow:
       0 1px 1px $Tool-box-shadow-color-line,
@@ -87,6 +95,7 @@
       0 23px 0 -9px $Tool-box-shadow-color-fill,
       0 24px 2px -9px $Tool-box-shadow-color-line;
   }
+
   &_4 {
     box-shadow:
       0 1px 1px $Tool-box-shadow-color-line,
@@ -99,6 +108,7 @@
       0 30px 0 -12px $Tool-box-shadow-color-fill,
       0 31px 2px -12px $Tool-box-shadow-color-line;
   }
+
   &_5 {
     box-shadow:
       0 1px 1px $Tool-box-shadow-color-line,
@@ -113,6 +123,7 @@
       0 37px 0 -15px $Tool-box-shadow-color-fill,
       0 38px 2px -15px $Tool-box-shadow-color-line;
   }
+
   &_more5 {
     box-shadow:
       0 1px 1px $Tool-box-shadow-color-line,

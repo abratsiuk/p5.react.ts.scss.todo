@@ -11,13 +11,14 @@
     padding: $Todo__text-padding;
     border: 1px solid $Tool-box-shadow-color-line-end;
     box-shadow:
-      inset -1px -1px 1px 0px $Tool-box-shadow-color-fill-end,
-      inset 1px 1px 1px 0px $Tool-box-shadow-color-fill-end;
+      inset -1px -1px 1px 0 $Tool-box-shadow-color-fill-end,
+      inset 1px 1px 1px 0 $Tool-box-shadow-color-fill-end;
     outline: none;
+
     &_empty {
       box-shadow:
-        inset -1px -1px 1px 0px $TodoShow__remove-color,
-        inset 1px 1px 1px 0px $TodoShow__remove-color;
+        inset -1px -1px 1px 0 $TodoShow__remove-color,
+        inset 1px 1px 1px 0 $TodoShow__remove-color;
     }
   }
 }

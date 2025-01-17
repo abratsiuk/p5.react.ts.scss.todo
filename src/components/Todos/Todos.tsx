@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { Todo } from '../Todo';
-import './Todos.scss';
 import { useDataContext } from '../../hooks/useDataContext';
 import { getTodosFiltered } from '../../helpers';
 

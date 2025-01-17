@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: $Todo-grid-template-columns;
   align-items: center;
-
   width: $Todo-width;
   height: $Todo-height;
   box-shadow: $Todo-box-shadow;
@@ -15,6 +14,7 @@
     padding: $Todo__text-padding;
     border: none;
     outline: none;
+
     &::placeholder {
       color: #e6e6e6;
     }
