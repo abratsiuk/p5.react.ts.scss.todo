@@ -48,68 +48,53 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
     return 'empty';
   }, [todosKindsNumber]);
 
-  const addTodo = useCallback(
-    (text: string) => {
-      setTodos((prevTodos: ITodoItem[]) => {
-        return [
-          ...prevTodos,
-          {
-            id: Date.now(),
-            text,
-            isCompleted: false,
-          },
-        ];
-      });
-    },
-    [setTodos],
-  );
+  const addTodo = useCallback((text: string) => {
+    setTodos((prevTodos: ITodoItem[]) => {
+      return [
+        ...prevTodos,
+        {
+          id: Date.now(),
+          text,
+          isCompleted: false,
+        },
+      ];
+    });
+  }, []);
 
-  const deleteTodo = useCallback(
-    (id: number) => {
-      setTodos((prevTodos: ITodoItem[]) => {
-        return prevTodos.filter((t) => t.id !== id);
-      });
-    },
-    [setTodos],
-  );
+  const deleteTodo = useCallback((id: number) => {
+    setTodos((prevTodos: ITodoItem[]) => {
+      return prevTodos.filter((t) => t.id !== id);
+    });
+  }, []);
 
-  const handleToggleCompleted = useCallback(
-    (id: number) => {
-      setTodos((prevTodos: ITodoItem[]) => {
-        return prevTodos.map((t) =>
-          t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
-        );
-      });
-    },
-    [setTodos],
-  );
+  const handleToggleCompleted = useCallback((id: number) => {
+    setTodos((prevTodos: ITodoItem[]) => {
+      return prevTodos.map((t) =>
+        t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
+      );
+    });
+  }, []);
 
-  const changeTodoText = useCallback(
-    (id: number, text: string) => {
-      setTodos((prevTodos: ITodoItem[]) => {
-        return prevTodos.map((t) => (t.id === id ? { ...t, text } : t));
-      });
-    },
-    [setTodos],
-  );
+  const changeTodoText = useCallback((id: number, text: string) => {
+    setTodos((prevTodos: ITodoItem[]) => {
+      return prevTodos.map((t) => (t.id === id ? { ...t, text } : t));
+    });
+  }, []);
 
-  const toggleCompletedAll = useCallback(
-    (completed: boolean) => {
-      setTodos((prevTodos: ITodoItem[]) => {
-        return prevTodos.map<ITodoItem>((t: ITodoItem) => ({
-          ...t,
-          isCompleted: completed,
-        }));
-      });
-    },
-    [setTodos],
-  );
+  const toggleCompletedAll = useCallback((completed: boolean) => {
+    setTodos((prevTodos: ITodoItem[]) => {
+      return prevTodos.map<ITodoItem>((t: ITodoItem) => ({
+        ...t,
+        isCompleted: completed,
+      }));
+    });
+  }, []);
 
   const clearCompleted = useCallback(() => {
     setTodos((prevTodos: ITodoItem[]) => {
       return prevTodos.filter((t) => !t.isCompleted);
     });
-  }, [setTodos]);
+  }, []);
 
   const handleFilterAll = useCallback(() => setTodosFilter('all'), []);
   const handleFilterActive = useCallback(() => setTodosFilter('active'), []);
@@ -148,10 +133,10 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
   );
 
   return (
-    <TodosDataContext.Provider value={valueData}>
-      <TodosActionContext.Provider value={valueAction}>
+    <TodosActionContext.Provider value={valueAction}>
+      <TodosDataContext.Provider value={valueData}>
         {children}
-      </TodosActionContext.Provider>
-    </TodosDataContext.Provider>
+      </TodosDataContext.Provider>
+    </TodosActionContext.Provider>
   );
 };
