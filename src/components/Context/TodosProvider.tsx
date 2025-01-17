@@ -58,12 +58,9 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
     });
   }, []);
 
-  const handleFilterAll = useCallback(() => setTodosFilter('all'), []);
-  const handleFilterActive = useCallback(() => setTodosFilter('active'), []);
-  const handleFilterCompleted = useCallback(
-    () => setTodosFilter('completed'),
-    [],
-  );
+  const setFilterAll = useCallback(() => setTodosFilter('all'), []);
+  const setFilterActive = useCallback(() => setTodosFilter('active'), []);
+  const setFilterCompleted = useCallback(() => setTodosFilter('completed'), []);
 
   const valueData = useMemo(
     () => ({ todosAll, todosFilter }),
@@ -76,9 +73,9 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
       removeTodo,
       toggleTodoCompleted,
       updateTodoText,
-      handleFilterAll,
-      handleFilterActive,
-      handleFilterCompleted,
+      setFilterAll,
+      setFilterActive,
+      setFilterCompleted,
       removeCompletedTodos,
     }),
     [
@@ -87,9 +84,9 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
       removeTodo,
       toggleTodoCompleted,
       updateTodoText,
-      handleFilterAll,
-      handleFilterActive,
-      handleFilterCompleted,
+      setFilterAll,
+      setFilterActive,
+      setFilterCompleted,
       removeCompletedTodos,
     ],
   );

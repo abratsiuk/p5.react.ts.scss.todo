@@ -7,9 +7,9 @@ import { getTodosState, getTodosActive } from '../../helpers';
 export const Tool = memo(() => {
   const { todosAll, todosFilter } = useDataContext();
   const {
-    handleFilterAll,
-    handleFilterActive,
-    handleFilterCompleted,
+    setFilterAll,
+    setFilterActive,
+    setFilterCompleted,
     removeCompletedTodos,
   } = useActionContext();
 
@@ -35,21 +35,21 @@ export const Tool = memo(() => {
 
       <div
         className={`Tool__all ${todosFilter === 'all' ? 'Tool__all_selected' : ''}`}
-        onClick={handleFilterAll}
+        onClick={setFilterAll}
       >
         All
       </div>
 
       <div
         className={`Tool__active ${todosFilter === 'active' ? 'Tool__active_selected' : ''}`}
-        onClick={handleFilterActive}
+        onClick={setFilterActive}
       >
         Active
       </div>
 
       <div
         className={`Tool__completed ${todosFilter === 'completed' ? 'Tool__completed_selected' : ''}`}
-        onClick={handleFilterCompleted}
+        onClick={setFilterCompleted}
       >
         Completed
       </div>
