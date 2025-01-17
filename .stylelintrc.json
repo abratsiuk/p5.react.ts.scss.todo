@@ -1,6 +1,8 @@
 {
   "extends": "stylelint-config-standard-scss",
-  "plugins": ["stylelint-selector-bem-pattern"],
+  "plugins": [
+    "stylelint-selector-bem-pattern"
+  ],
   "rules": {
     "plugin/selector-bem-pattern": {
       "preset": "bem",
@@ -8,6 +10,7 @@
         "initial": "^\\.{component}(?:__[-\\w]+)?(?:--\\w+)?$",
         "combined": "^\\.combined-{component}-[a-z]+$"
       }
-    }
+    },
+    "scss/dollar-variable-pattern": null
   }
 }
