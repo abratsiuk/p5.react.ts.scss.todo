@@ -21,12 +21,14 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
         },
       ];
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const removeTodo = useCallback((id: number) => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.filter((t) => t.id !== id);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleTodoCompleted = useCallback((id: number) => {
@@ -35,12 +37,14 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
         t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
       );
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const updateTodoText = useCallback((id: number, text: string) => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.map((t) => (t.id === id ? { ...t, text } : t));
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggleAllTodosCompleted = useCallback((completed: boolean) => {
@@ -50,12 +54,14 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
         isCompleted: completed,
       }));
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const removeCompletedTodos = useCallback(() => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.filter((t) => !t.isCompleted);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setFilterAll = useCallback(() => setTodosFilter('all'), []);

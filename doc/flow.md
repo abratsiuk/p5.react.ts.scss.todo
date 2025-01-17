@@ -35,7 +35,15 @@ copy script commands from old p4.uazdao:
 "format": "prettier --write ."
 },
 
+---
 
------------
 fix error: Delete CR prettier/prettier
 yarn format
+
+-----
+повторно - настройка Eslint:
+
+Откройте командную палитру Ctrl + Shift + P.
+Введите "ESLint: Enable".
+вызывается мастер настройки Eslint
+- НО ОТМЕНИЛ ВСЕ ЕГО ПРАВКИ, вернуд назад vite.config.js, а то вообще сплошные ошибки пошли
