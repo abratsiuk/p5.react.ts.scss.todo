@@ -29,7 +29,7 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
     });
   }, []);
 
-  const handleToggleCompleted = useCallback((id: number) => {
+  const toggleTodoCompleted = useCallback((id: number) => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.map((t) =>
         t.id === id ? { ...t, isCompleted: !t.isCompleted } : t,
@@ -74,7 +74,7 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
       toggleCompletedAll,
       createTodo,
       removeTodo,
-      handleToggleCompleted,
+      toggleTodoCompleted,
       changeTodoText,
       handleFilterAll,
       handleFilterActive,
@@ -85,7 +85,7 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
       toggleCompletedAll,
       createTodo,
       removeTodo,
-      handleToggleCompleted,
+      toggleTodoCompleted,
       changeTodoText,
       handleFilterAll,
       handleFilterActive,

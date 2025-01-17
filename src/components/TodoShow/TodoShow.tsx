@@ -5,7 +5,7 @@ import { useActionContext } from '../../hooks/useActionContext';
 
 export const TodoShow: React.FC<ITodoItem> = memo(
   ({ id, text, isCompleted }) => {
-    const { removeTodo, handleToggleCompleted } = useActionContext();
+    const { removeTodo, toggleTodoCompleted } = useActionContext();
     const completedClassName = [
       styles.TodoShow__completed,
       isCompleted
@@ -23,7 +23,7 @@ export const TodoShow: React.FC<ITodoItem> = memo(
       <div className={styles.TodoShow}>
         <div
           className={completedClassName}
-          onClick={() => handleToggleCompleted(id)}
+          onClick={() => toggleTodoCompleted(id)}
         />
         <div className={textClassName}>{text}</div>
         <button
