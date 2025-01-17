@@ -5,10 +5,10 @@ import { useActionContext } from '../../hooks/useActionContext';
 import { getTodosState } from '../../helpers';
 
 export const TodosToggle = memo(() => {
-  const { filtered } = useDataContext();
+  const { todosAll } = useDataContext();
   const { toggleCompletedAll } = useActionContext();
 
-  const todosState = getTodosState(filtered);
+  const todosState = getTodosState(todosAll);
 
   const modifier =
     todosState === 'empty'

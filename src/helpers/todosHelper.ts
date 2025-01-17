@@ -1,35 +1,36 @@
 import { TTodosState } from '../types/TTodosState';
 import { ITodoItem } from '../interfaces/ITodoItem';
+import { TTodosFilter } from '../types/TTodosFilter';
 
-export const getTodosAll = (todos: ITodoItem[]): number => {
-  if (!todos || todos.length === 0) {
+export const getTodosAll = (todosAll: ITodoItem[]): number => {
+  if (!todosAll || todosAll.length === 0) {
     return 0;
   }
-  return todos.length;
+  return todosAll.length;
 };
 
-export const getTodosCompleted = (todos: ITodoItem[]): number => {
-  if (!todos || todos.length === 0) {
+export const getTodosCompleted = (todosAll: ITodoItem[]): number => {
+  if (!todosAll || todosAll.length === 0) {
     return 0;
   }
-  return todos.reduce((completed, todo) => {
+  return todosAll.reduce((completed, todo) => {
     return completed + (todo.isCompleted ? 1 : 0);
   }, 0);
 };
 
-export const getTodosActive = (todos: ITodoItem[]): number => {
-  if (!todos || todos.length === 0) {
+export const getTodosActive = (todosAll: ITodoItem[]): number => {
+  if (!todosAll || todosAll.length === 0) {
     return 0;
   }
-  return todos.reduce((active, todo) => {
+  return todosAll.reduce((active, todo) => {
     return active + (todo.isCompleted ? 0 : 1);
   }, 0);
 };
 
-export const getTodosState = (todos: ITodoItem[]): TTodosState => {
-  const all = getTodosAll(todos);
-  const completed = getTodosCompleted(todos);
-  const active = getTodosActive(todos);
+export const getTodosState = (todosAll: ITodoItem[]): TTodosState => {
+  const all = getTodosAll(todosAll);
+  const completed = getTodosCompleted(todosAll);
+  const active = getTodosActive(todosAll);
   if (all == 0) {
     return 'empty';
   } else if (active > 0 && completed == 0) {
@@ -40,4 +41,18 @@ export const getTodosState = (todos: ITodoItem[]): TTodosState => {
     return 'allCompleted';
   }
   return 'empty';
+};
+
+export const getTodosFiltered = (
+  todosAll: ITodoItem[],
+  todosFilter: TTodosFilter,
+): ITodoItem[] => {
+  switch (todosFilter) {
+    case 'all':
+      return todosAll;
+    case 'active':
+      return todosAll.filter((t) => !t.isCompleted);
+    case 'completed':
+      return todosAll.filter((t) => t.isCompleted);
+  }
 };

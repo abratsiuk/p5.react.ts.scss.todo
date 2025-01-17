@@ -5,7 +5,7 @@ import { useActionContext } from '../../hooks/useActionContext';
 import { getTodosState, getTodosActive } from '../../helpers';
 
 export const Tool = memo(() => {
-  const { filtered, todosFilter } = useDataContext();
+  const { todosAll, todosFilter } = useDataContext();
   const {
     handleFilterAll,
     handleFilterActive,
@@ -13,8 +13,8 @@ export const Tool = memo(() => {
     clearCompleted,
   } = useActionContext();
 
-  const todosState = getTodosState(filtered);
-  const todosLeft = getTodosActive(filtered);
+  const todosState = getTodosState(todosAll);
+  const todosLeft = getTodosActive(todosAll);
   const toolClassName = [
     'Tool',
     todosState === 'empty' ? 'Tool_hide' : '',

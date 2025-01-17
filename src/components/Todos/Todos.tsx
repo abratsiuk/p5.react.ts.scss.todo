@@ -2,9 +2,11 @@ import { memo } from 'react';
 import { Todo } from '../Todo';
 import './Todos.scss';
 import { useDataContext } from '../../hooks/useDataContext';
+import { getTodosFiltered } from '../../helpers';
 
 export const Todos = memo(() => {
-  const { filtered } = useDataContext();
+  const { todosAll, todosFilter } = useDataContext();
+  const filtered = getTodosFiltered(todosAll, todosFilter);
 
   return (
     <div className="Todos">

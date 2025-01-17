@@ -1,4 +1,5 @@
 export {
+  getTodosFiltered,
   getTodosAll,
   getTodosActive,
   getTodosCompleted,
