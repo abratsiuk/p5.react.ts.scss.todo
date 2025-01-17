@@ -10,7 +10,7 @@ export const Tool = memo(() => {
     handleFilterAll,
     handleFilterActive,
     handleFilterCompleted,
-    clearCompleted,
+    removeCompletedTodos,
   } = useActionContext();
 
   const todosState = getTodosState(todosAll);
@@ -23,9 +23,9 @@ export const Tool = memo(() => {
   ].join(' ');
 
   const clearClassName = [
-    'Tool__clearCompleted',
+    'Tool__removeCompletedTodos',
     todosState === 'empty' || todosState === 'allActive'
-      ? 'Tool__clearCompleted_noCompleted'
+      ? 'Tool__removeCompletedTodos_noCompleted'
       : '',
   ].join(' ');
 
@@ -54,7 +54,7 @@ export const Tool = memo(() => {
         Completed
       </div>
 
-      <div className={clearClassName} onClick={clearCompleted}>
+      <div className={clearClassName} onClick={removeCompletedTodos}>
         Clear completed
       </div>
     </div>

@@ -6,15 +6,15 @@ import './Todo.scss';
 import { useActionContext } from '../../hooks/useActionContext';
 
 export const Todo: React.FC<ITodoItem> = memo(({ id, text, isCompleted }) => {
-  const { changeTodoText } = useActionContext();
+  const { updateTodoText } = useActionContext();
   const [isEditing, setIsEditing] = useState(false);
 
   const onConfirmEditing = useCallback(
     (text: string) => {
-      changeTodoText(id, text);
+      updateTodoText(id, text);
       setIsEditing(false);
     },
-    [id, changeTodoText],
+    [id, updateTodoText],
   );
 
   const onCancelEditing = useCallback(() => {

@@ -6,7 +6,7 @@ import { getTodosState } from '../../helpers';
 
 export const TodosToggle = memo(() => {
   const { todosAll } = useDataContext();
-  const { toggleCompletedAll } = useActionContext();
+  const { toggleAllTodosCompleted } = useActionContext();
 
   const todosState = getTodosState(todosAll);
 
@@ -22,9 +22,10 @@ export const TodosToggle = memo(() => {
         className={`TodosToggle__toggle TodosToggle__toggle_${modifier}`}
         onClick={() => {
           if (todosState === 'empty') return;
-          if (todosState === 'allActive') toggleCompletedAll(true);
-          if (todosState === 'anyActive-anyCompleted') toggleCompletedAll(true);
-          if (todosState === 'allCompleted') toggleCompletedAll(false);
+          if (todosState === 'allActive') toggleAllTodosCompleted(true);
+          if (todosState === 'anyActive-anyCompleted')
+            toggleAllTodosCompleted(true);
+          if (todosState === 'allCompleted') toggleAllTodosCompleted(false);
         }}
       />
     </div>

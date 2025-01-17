@@ -37,13 +37,13 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
     });
   }, []);
 
-  const changeTodoText = useCallback((id: number, text: string) => {
+  const updateTodoText = useCallback((id: number, text: string) => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.map((t) => (t.id === id ? { ...t, text } : t));
     });
   }, []);
 
-  const toggleCompletedAll = useCallback((completed: boolean) => {
+  const toggleAllTodosCompleted = useCallback((completed: boolean) => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.map<ITodoItem>((t: ITodoItem) => ({
         ...t,
@@ -52,7 +52,7 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
     });
   }, []);
 
-  const clearCompleted = useCallback(() => {
+  const removeCompletedTodos = useCallback(() => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.filter((t) => !t.isCompleted);
     });
@@ -71,26 +71,26 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
   );
   const valueAction = useMemo(
     () => ({
-      toggleCompletedAll,
+      toggleAllTodosCompleted,
       createTodo,
       removeTodo,
       toggleTodoCompleted,
-      changeTodoText,
+      updateTodoText,
       handleFilterAll,
       handleFilterActive,
       handleFilterCompleted,
-      clearCompleted,
+      removeCompletedTodos,
     }),
     [
-      toggleCompletedAll,
+      toggleAllTodosCompleted,
       createTodo,
       removeTodo,
       toggleTodoCompleted,
-      changeTodoText,
+      updateTodoText,
       handleFilterAll,
       handleFilterActive,
       handleFilterCompleted,
-      clearCompleted,
+      removeCompletedTodos,
     ],
   );
 
