@@ -5,7 +5,6 @@ corepack enable
 yarn config set nodeLinker node-modules
 yarn set version stable
 
- 
 yarn add react-router-dom@6
 yarn
 yarn dev
@@ -14,7 +13,6 @@ yarn dev
 yarn cache clean
 yarn
 --======================
-
 
 git init
 git add -A
@@ -35,6 +33,7 @@ yarn add -D prettier @typescript-eslint/parser @typescript-eslint/eslint-plugin 
 yarn add -D eslint-config-prettier eslint-plugin-prettier
 
 https://fontawesome.com/
+
 <script src="https://kit.fontawesome.com/bd4e968d26.js" crossorigin="anonymous"></script>
 
 copy files with setting from p4.uazdao
@@ -43,11 +42,9 @@ copy files with setting from p4.uazdao
 
 ## set github Actions
 
-
- Михаил Непомнящий [Используем GitHub Actions для публикации на GitHub Pages](https://www.youtube.com/watch?v=KQimnN1xMqY&t=39s&ab_channel=%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB%D0%9D%D0%B5%D0%BF%D0%BE%D0%BC%D0%BD%D1%8F%D1%89%D0%B8%D0%B9)
+Михаил Непомнящий [Используем GitHub Actions для публикации на GitHub Pages](https://www.youtube.com/watch?v=KQimnN1xMqY&t=39s&ab_channel=%D0%9C%D0%B8%D1%85%D0%B0%D0%B8%D0%BB%D0%9D%D0%B5%D0%BF%D0%BE%D0%BC%D0%BD%D1%8F%D1%89%D0%B8%D0%B9)
 
 [Vite: Deploying a Static Site](https://vite.dev/guide/static-deploy.html)
-
 
 ![](_md_img/flow_images/flow%202025-01-02-14-40-12.png)
 
@@ -61,9 +58,8 @@ yarn
 
 ![](_md_img/flow_images/flow%202025-01-02-15-06-04.png)
 ![](_md_img/flow_images/flow%202025-01-02-15-12-43.png)
-![](_md_img/flow_images/flow%202025-01-02-15-16-44.png)
-      - name: Enable Corepack
-        run: corepack enable
+![](_md_img/flow_images/flow%202025-01-02-15-16-44.png) - name: Enable Corepack
+run: corepack enable
 
       - name: Set Yarn version to stable
         run: yarn set version stable
@@ -71,6 +67,7 @@ yarn
         run: yarn config set nodeLinker node-modules
 
 Искин: чтобы было как npm ci:
+
 - name: Clean node_modules
   run: rm -rf node_modules
 
@@ -166,9 +163,10 @@ export default defineConfig({
 
 change images location and add base path to scss:
 
-**all images and statics in  public folder**
+**all images and statics in public folder**
 
-1) jsx
+1. jsx
+
 ```
       <img
         className="Person__photo"
@@ -176,9 +174,11 @@ change images location and add base path to scss:
         alt="person photo"
       />
 ```
-1) scss
+
+1. scss
 
 vite.config.js
+
 ```
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -189,7 +189,7 @@ export default defineConfig({
   base: '/projects-presentation/',
   server: {
     open: '/projects-presentation/', // Автоматически открывать правильный URL
-  },  
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -223,4 +223,3 @@ https://icon-icons.com/search/icons/?filtro=car&page=3
 
 edit pictures
 https://www.photopea.com/
-
