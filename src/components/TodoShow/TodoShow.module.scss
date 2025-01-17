@@ -42,6 +42,7 @@
     grid-column: 2/3;
     padding: $Todo__text-padding;
     transition: $color_transition;
+    /* stylelint-disable-next-line block-no-empty */
     &_active {
     }
     &_completed {

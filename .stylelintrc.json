@@ -11,6 +11,10 @@
         "combined": "^\\.combined-{component}-[a-z]+$"
       }
     },
-    "scss/dollar-variable-pattern": null
+    "scss/dollar-variable-pattern": null,
+    "selector-class-pattern": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null
   }
 }
