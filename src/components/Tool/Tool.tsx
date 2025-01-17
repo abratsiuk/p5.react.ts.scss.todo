@@ -2,9 +2,10 @@ import { memo } from 'react';
 import './Tool.scss';
 import { useDataContext } from '../../hooks/useDataContext';
 import { useActionContext } from '../../hooks/useActionContext';
+import { getTodosState, getTodosActive } from '../../helpers';
 
 export const Tool = memo(() => {
-  const { todosKindsNumber, todosState, todosFilter } = useDataContext();
+  const { filtered, todosFilter } = useDataContext();
   const {
     handleFilterAll,
     handleFilterActive,
@@ -12,7 +13,8 @@ export const Tool = memo(() => {
     clearCompleted,
   } = useActionContext();
 
-  const todosLeft = todosKindsNumber.active;
+  const todosState = getTodosState(filtered);
+  const todosLeft = getTodosActive(filtered);
   const toolClassName = [
     'Tool',
     todosState === 'empty' ? 'Tool_hide' : '',

@@ -3,9 +3,7 @@ import { FC, PropsWithChildren } from 'react';
 import { TodosDataContext } from './TodosDataContext';
 import { TodosActionContext } from './TodosActionContext';
 import { ITodoItem } from '../../interfaces/ITodoItem';
-import { TTodosState } from '../../types/TTodosState';
 import { TTodosFilter } from '../../types/TTodosFilter';
-import { ITodosKindsNumber } from '../../interfaces/ITodosKindsNumber';
 import { useTodos } from '../../hooks/useTodos';
 
 export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
@@ -22,31 +20,6 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
         return todos.filter((t) => t.isCompleted);
     }
   }, [todos, todosFilter]);
-
-  const todosKindsNumber = useMemo<ITodosKindsNumber>(() => {
-    const all = todos.length;
-    const completed =
-      all > 0
-        ? todos.reduce((completed, todo) => {
-            return completed + (todo.isCompleted ? 1 : 0);
-          }, 0)
-        : 0;
-    const active = all - completed;
-    return { all, active, completed };
-  }, [todos]);
-
-  const todosState = useMemo<TTodosState>(() => {
-    if (todosKindsNumber.all == 0) {
-      return 'empty';
-    } else if (todosKindsNumber.active > 0 && todosKindsNumber.completed == 0) {
-      return 'allActive';
-    } else if (todosKindsNumber.active > 0 && todosKindsNumber.completed > 0) {
-      return 'anyActive-anyCompleted';
-    } else if (todosKindsNumber.active == 0 && todosKindsNumber.completed > 0) {
-      return 'allCompleted';
-    }
-    return 'empty';
-  }, [todosKindsNumber]);
 
   const addTodo = useCallback((text: string) => {
     setTodos((prevTodos: ITodoItem[]) => {
@@ -104,8 +77,8 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
   );
 
   const valueData = useMemo(
-    () => ({ todosState, filtered, todosKindsNumber, todosFilter }),
-    [todosState, filtered, todosKindsNumber, todosFilter],
+    () => ({ filtered, todosFilter }),
+    [filtered, todosFilter],
   );
   const valueAction = useMemo(
     () => ({
