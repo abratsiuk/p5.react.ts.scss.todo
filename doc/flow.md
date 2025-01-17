@@ -41,9 +41,8 @@ fix error: Delete CR prettier/prettier
 yarn format
 
 -----
-повторно - настройка Eslint:
+yarn stylelint  
+yarn lint
 
-Откройте командную палитру Ctrl + Shift + P.
-Введите "ESLint: Enable".
-вызывается мастер настройки Eslint
-- НО ОТМЕНИЛ ВСЕ ЕГО ПРАВКИ, вернуд назад vite.config.js, а то вообще сплошные ошибки пошли
+yarn stylelint  --fix
+yarn lint --fix

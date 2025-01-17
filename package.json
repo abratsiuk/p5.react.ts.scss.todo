@@ -7,10 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "stylelint": "stylelint \"**/*.scss\"",
     "preview": "vite preview",
-    "start": "yarn dev",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "stylelint": "stylelint \"**/*.scss\""
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
