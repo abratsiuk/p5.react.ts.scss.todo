@@ -49,7 +49,7 @@
       color: $TodoShow__text_completed-color;
     }
   }
-  &__delete {
+  &__remove {
     grid-column: 2/3;
     display: none;
     border: none;
@@ -62,18 +62,18 @@
     height: 4rem;
     margin: auto 0;
     font-size: 3rem;
-    color: $TodoShow__delete-color;
+    color: $TodoShow__remove-color;
     margin-bottom: 1.1rem;
     &::after {
       content: '\00D7';
     }
     &:hover {
       transition: $color_transition;
-      color: $TodoShow__delete_hover-color;
+      color: $TodoShow__remove_hover-color;
     }
   }
 
-  &:hover &__delete {
+  &:hover &__remove {
     display: block;
   }
 }

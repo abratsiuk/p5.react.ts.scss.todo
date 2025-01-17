@@ -3,7 +3,7 @@ import './TodoNew.scss';
 import { useActionContext } from '../../hooks/useActionContext';
 
 export const TodoNew = memo(() => {
-  const { addTodo } = useActionContext();
+  const { createTodo } = useActionContext();
   const [value, setValue] = useState('');
 
   return (
@@ -18,7 +18,7 @@ export const TodoNew = memo(() => {
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(event) => {
           if (event.code === 'Enter') {
-            if (value.trim()) addTodo(value.trim());
+            if (value.trim()) createTodo(value.trim());
             setValue('');
           }
           if (event.code === 'Escape') {

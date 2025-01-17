@@ -1,7 +1,7 @@
 export interface ITodosActionContext {
   toggleCompletedAll: (completed: boolean) => void;
-  addTodo: (text: string) => void;
-  deleteTodo: (id: number) => void;
+  createTodo: (text: string) => void;
+  removeTodo: (id: number) => void;
   handleToggleCompleted: (id: number) => void;
   changeTodoText: (id: number, text: string) => void;
   handleFilterAll: () => void;

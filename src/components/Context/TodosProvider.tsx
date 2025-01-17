@@ -10,7 +10,7 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
   const [todosAll, setTodosAll] = useTodos();
   const [todosFilter, setTodosFilter] = useState<TTodosFilter>('all');
 
-  const addTodo = useCallback((text: string) => {
+  const createTodo = useCallback((text: string) => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return [
         ...prevTodos,
@@ -23,7 +23,7 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
     });
   }, []);
 
-  const deleteTodo = useCallback((id: number) => {
+  const removeTodo = useCallback((id: number) => {
     setTodosAll((prevTodos: ITodoItem[]) => {
       return prevTodos.filter((t) => t.id !== id);
     });
@@ -72,8 +72,8 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
   const valueAction = useMemo(
     () => ({
       toggleCompletedAll,
-      addTodo,
-      deleteTodo,
+      createTodo,
+      removeTodo,
       handleToggleCompleted,
       changeTodoText,
       handleFilterAll,
@@ -83,8 +83,8 @@ export const TodosProvider: FC<PropsWithChildren> = ({ children }) => {
     }),
     [
       toggleCompletedAll,
-      addTodo,
-      deleteTodo,
+      createTodo,
+      removeTodo,
       handleToggleCompleted,
       changeTodoText,
       handleFilterAll,
